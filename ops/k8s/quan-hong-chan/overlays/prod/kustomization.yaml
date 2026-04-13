@@ -7,4 +7,4 @@ resources:
 images:
   - name: ghcr.io/gateszhangc/quan-hong-chan
     newName: ghcr.io/gateszhangc/quan-hong-chan
-    newTag: ad7be0e3240dae66f2389e572e7f3f2db5a99786
+    newTag: a812820bda6e49a619721e61b2787592f4939d24
