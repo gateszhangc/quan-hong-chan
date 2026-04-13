@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths-ignore:
-      - "ops/k8s/hormuz-brief/overlays/prod/kustomization.yaml"
+      - "ops/k8s/quan-hong-chan/overlays/prod/kustomization.yaml"
   workflow_dispatch:
 
 concurrency:
-  group: hormuz-brief-release-${{ github.ref }}
+  group: quan-hong-chan-release-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -17,8 +17,8 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/hormuz-brief
-  KUSTOMIZATION_FILE: ops/k8s/hormuz-brief/overlays/prod/kustomization.yaml
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/quan-hong-chan
+  KUSTOMIZATION_FILE: ops/k8s/quan-hong-chan/overlays/prod/kustomization.yaml
 
 jobs:
   release:
@@ -60,8 +60,8 @@ jobs:
           import os
           from pathlib import Path
 
-          path = Path("ops/k8s/hormuz-brief/overlays/prod/kustomization.yaml")
-          image_name = "ghcr.io/gateszhangc/hormuz-brief"
+          path = Path("ops/k8s/quan-hong-chan/overlays/prod/kustomization.yaml")
+          image_name = "ghcr.io/gateszhangc/quan-hong-chan"
           new_tag = os.environ["GIT_SHA"]
 
           lines = path.read_text().splitlines()
@@ -111,5 +111,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$KUSTOMIZATION_FILE"
-          git commit -m "chore: sync hormuz image tag ${GITHUB_SHA::7} [skip ci]"
+          git commit -m "chore: sync quan-hong-chan image tag ${GITHUB_SHA::7} [skip ci]"
           git push

@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hormuz-brief
+  name: quan-hong-chan
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/gateszhangc/hormuz-brief.git
+    repoURL: https://github.com/gateszhangc/quan-hong-chan.git
     targetRevision: main
-    path: ops/k8s/hormuz-brief/overlays/prod
+    path: ops/k8s/quan-hong-chan/overlays/prod
   destination:
     server: https://kubernetes.default.svc
-    namespace: hormuz-brief
+    namespace: quan-hong-chan
   syncPolicy:
     automated:
       prune: true

@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hormuz-brief
+  name: quan-hong-chan
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -9,27 +9,27 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - huo-er-mu-ci-hai-xia.homes
-        - www.huo-er-mu-ci-hai-xia.homes
-      secretName: hormuz-brief-tls
+        - quan-hong-chan.lol
+        - www.quan-hong-chan.lol
+      secretName: quan-hong-chan-tls
   rules:
-    - host: huo-er-mu-ci-hai-xia.homes
+    - host: quan-hong-chan.lol
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: hormuz-brief
+                name: quan-hong-chan
                 port:
                   name: http
-    - host: www.huo-er-mu-ci-hai-xia.homes
+    - host: www.quan-hong-chan.lol
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: hormuz-brief
+                name: quan-hong-chan
                 port:
                   name: http

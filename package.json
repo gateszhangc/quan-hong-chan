@@ -1,9 +1,9 @@
 {
-  "name": "hormuz-brief",
+  "name": "quan-hong-chan",
   "version": "2.6.0",
   "private": true,
   "author": "idoubi",
-  "homepage": "https://huo-er-mu-ci-hai-xia.homes",
+  "homepage": "https://quan-hong-chan.lol",
   "engines": {
     "node": ">=18.17.0"
   },

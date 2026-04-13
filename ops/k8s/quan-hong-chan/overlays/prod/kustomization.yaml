@@ -5,6 +5,6 @@ resources:
   - ../../base
 
 images:
-  - name: ghcr.io/gateszhangc/hormuz-brief
-    newName: ghcr.io/gateszhangc/hormuz-brief
+  - name: ghcr.io/gateszhangc/quan-hong-chan
+    newName: ghcr.io/gateszhangc/quan-hong-chan
     newTag: ad7be0e3240dae66f2389e572e7f3f2db5a99786
