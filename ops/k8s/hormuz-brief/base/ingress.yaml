@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hormuz-brief
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - huo-er-mu-ci-hai-xia.homes
+        - www.huo-er-mu-ci-hai-xia.homes
+      secretName: hormuz-brief-tls
+  rules:
+    - host: huo-er-mu-ci-hai-xia.homes
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hormuz-brief
+                port:
+                  name: http
+    - host: www.huo-er-mu-ci-hai-xia.homes
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hormuz-brief
+                port:
+                  name: http

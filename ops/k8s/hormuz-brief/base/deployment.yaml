@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hormuz-brief
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hormuz-brief
+  template:
+    metadata:
+      labels:
+        app: hormuz-brief
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/gateszhangc/hormuz-brief:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: hormuz-brief-config
+          readinessProbe:
+            httpGet:
+              path: /en
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /en
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 768Mi
