@@ -6,6 +6,7 @@ import {
   getHormuzSiteCopy,
 } from "@/lib/hormuz-content";
 import { getHormuzNewsFeed } from "@/lib/hormuz-news";
+import { getSiteUrl } from "@/lib/site-url";
 
 const formatDateTime = (locale: string, value: string) => {
   const date = new Date(value);
@@ -21,9 +22,9 @@ const formatDateTime = (locale: string, value: string) => {
 
 const extractHost = (url: string) => {
   try {
-    return new URL(url, "https://quan-hong-chan.lol").hostname.replace(/^www\./, "");
+    return new URL(url, getSiteUrl()).hostname.replace(/^www\./, "");
   } catch {
-    return "quan-hong-chan.lol";
+    return new URL(getSiteUrl()).hostname.replace(/^www\./, "");
   }
 };
 

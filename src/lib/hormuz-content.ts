@@ -1,4 +1,5 @@
 import { toFileLocale } from "@/i18n/locale";
+import { getSiteUrl } from "@/lib/site-url";
 
 type LocalizedText = {
   en: string;
@@ -461,7 +462,7 @@ Britannica 提到，在 **2025 年 6 月 22 日美国打击伊朗核设施** 之
 const localized = (locale: string, value: LocalizedText) =>
   toFileLocale(locale) === "zh-cn" ? value.zh : value.en;
 
-export const getHormuzSiteOrigin = () => "https://quan-hong-chan.lol";
+export const getHormuzSiteOrigin = () => getSiteUrl();
 
 export const getHormuzSiteCopy = (locale: string) => {
   const isZh = toFileLocale(locale) === "zh-cn";

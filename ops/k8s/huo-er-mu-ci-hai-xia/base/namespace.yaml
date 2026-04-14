@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: huo-er-mu-ci-hai-xia
+  labels:
+    app.kubernetes.io/name: huo-er-mu-ci-hai-xia
+    app.kubernetes.io/part-of: huo-er-mu-ci-hai-xia

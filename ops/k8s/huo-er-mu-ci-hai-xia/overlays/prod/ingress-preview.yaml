@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: huo-er-mu-ci-hai-xia-preview
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  ingressClassName: nginx
+  tls:
+    - secretName: huo-er-mu-ci-hai-xia-preview-tls
+      hosts:
+        - huo-er-mu-ci-hai-xia.144.91.77.245.sslip.io
+  rules:
+    - host: huo-er-mu-ci-hai-xia.144.91.77.245.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: huo-er-mu-ci-hai-xia
+                port:
+                  number: 80

@@ -30,11 +30,34 @@ function normalizeBackendBaseUrl(baseUrl) {
   return normalized;
 }
 
+function normalizeCanonicalSiteUrl(siteUrl) {
+  const fallback = "https://huo-er-mu-ci-hai-xia.homes";
+  const normalized = (siteUrl || fallback).trim();
+  const value = normalized.startsWith("http") ? normalized : `https://${normalized}`;
+  const url = new URL(value);
+
+  if (url.hostname.startsWith("www.")) {
+    url.hostname = url.hostname.slice(4);
+  }
+
+  url.pathname = "/";
+  url.search = "";
+  url.hash = "";
+
+  return url.toString().replace(/\/+$/, "");
+}
+
 const backendBaseUrl = normalizeBackendBaseUrl(
   process.env.BACKEND_BASE_URL ||
     process.env.NEXT_PUBLIC_API_URL ||
     "http://127.0.0.1:5000"
 );
+const canonicalSiteUrl = normalizeCanonicalSiteUrl(
+  process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_WEB_URL
+);
+const canonicalSite = new URL(canonicalSiteUrl);
+const canonicalHost = canonicalSite.hostname;
+const canonicalWwwHost = `www.${canonicalHost}`;
 
 const runtimeProfile = process.env.NEXT_RUNTIME_PROFILE?.trim();
 const configuredDistDir =
@@ -131,10 +154,10 @@ const nextConfig = {
         has: [
           {
             type: "host",
-            value: "www.quan-hong-chan.lol",
+            value: canonicalWwwHost,
           },
         ],
-        destination: "https://quan-hong-chan.lol/:path*",
+        destination: `${canonicalSiteUrl}/:path*`,
         permanent: true,
       },
       {
