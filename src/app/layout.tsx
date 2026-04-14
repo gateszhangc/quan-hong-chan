@@ -47,8 +47,9 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        <link rel="icon" href="/brand/hormuz-favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/brand/hormuz-favicon.png" />
+        <link rel="icon" href="/brand/quan-hong-chan-favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/brand/quan-hong-chan-favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/brand/quan-hong-chan-favicon.png" />
       </head>
       <body className="font-sans antialiased">{children}</body>
     </html>

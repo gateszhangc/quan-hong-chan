@@ -103,13 +103,13 @@ export default async function HormuzHomepage({ locale }: { locale: string }) {
                 <div className="absolute left-[44%] top-12 h-[62%] w-px bg-[#9cd5ea]/55" />
                 <div className="absolute bottom-5 left-5 max-w-[15rem] rounded-2xl border border-white/10 bg-black/25 px-4 py-3 backdrop-blur">
                   <p className="text-[0.65rem] uppercase tracking-[0.24em] text-[#8fb0c2]">
-                    Transit corridor
+                    {copy.spotlightLabel}
                   </p>
                   <p className="mt-2 font-serif text-xl text-[#fff1dc]">{copy.brand}</p>
                 </div>
                 <div className="absolute right-5 top-5 flex items-center gap-2 rounded-full border border-[#f0ddc5]/20 bg-[#f0ddc5]/10 px-3 py-1 text-xs text-[#f0ddc5]">
                   <ShieldAlert className="h-3.5 w-3.5" />
-                  Risk lens active
+                  {copy.spotlightStatus}
                 </div>
               </div>
 

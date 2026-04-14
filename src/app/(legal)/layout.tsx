@@ -9,15 +9,14 @@ import GaRouteTracker from "@/components/analytics/ga-route-tracker";
 export function generateMetadata(): Metadata {
   return {
     title: {
-      template: `%s | Hormuz Strait News`,
-      default: "Hormuz Strait News Legal",
+      template: `%s | Quan Hongchan Watch`,
+      default: "Quan Hongchan Watch Legal",
     },
-    description:
-      "Legal, privacy, and site-policy pages for Hormuz Strait News.",
+    description: "Legal, privacy, and site-policy pages for Quan Hongchan Watch.",
     keywords: [
-      "Hormuz Strait News privacy policy",
-      "Hormuz Strait News terms",
-      "Hormuz Strait News refund policy",
+      "Quan Hongchan Watch privacy policy",
+      "Quan Hongchan Watch terms",
+      "Quan Hongchan Watch refund policy",
     ],
   };
 }

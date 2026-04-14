@@ -20,8 +20,8 @@ export async function generateMetadata({
     title: `Privacy Policy | ${copy.brand}`,
     description:
       locale.startsWith("zh")
-        ? "了解霍尔木兹海峡资讯站如何处理网站访问数据、分析数据与联系信息。"
-        : "Learn how Hormuz Strait News handles site analytics, technical data, and contact information.",
+        ? "了解全红婵观察站如何处理站点访问数据、分析数据与联系信息。"
+        : "Learn how Quan Hongchan Watch handles site analytics, technical data, and contact information.",
     alternates: {
       canonical: getAbsoluteLocalizedUrl(siteUrl, locale, pathname),
       languages: buildAlternateLanguageUrls(siteUrl, pathname),

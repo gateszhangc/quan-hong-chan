@@ -19,10 +19,6 @@ export const localizePathname = (locale: string, pathname: string): string => {
   const normalizedPath = normalizePathname(pathname);
   const resolvedLocale = normalizeLocale(locale) ?? defaultLocale;
 
-  if (resolvedLocale === defaultLocale) {
-    return normalizedPath;
-  }
-
   if (normalizedPath === "/") {
     return `/${resolvedLocale}`;
   }

@@ -31,7 +31,7 @@ export async function generateMetadata({
       title: copy.newsroomTitle,
       description: copy.newsroomDescription,
       url: canonicalUrl,
-      images: [`${siteUrl}/brand/hormuz-og.png`],
+      images: [`${siteUrl}/brand/quan-hong-chan-og.png`],
     },
   };
 }

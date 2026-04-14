@@ -1,5 +1,5 @@
-import { toFileLocale } from "@/i18n/locale";
-import { getHormuzBriefings } from "@/lib/hormuz-content";
+import { toFileLocale } from "../i18n/locale";
+import { getHormuzBriefings } from "./hormuz-content";
 
 export type HormuzNewsItem = {
   id: string;
@@ -17,53 +17,65 @@ type FeedSource = {
   url: string;
 };
 
+const buildGoogleNewsSearchFeed = (query: string, locale: "zh" | "en") => {
+  if (locale === "zh") {
+    return `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=zh-CN&gl=CN&ceid=CN:zh-Hans`;
+  }
+
+  return `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;
+};
+
 const FEED_SOURCES: FeedSource[] = [
   {
-    name: "BBC Middle East",
-    url: "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
+    name: "Google News CN / 全红婵",
+    url: buildGoogleNewsSearchFeed("全红婵", "zh"),
   },
   {
-    name: "Al Jazeera",
-    url: "https://www.aljazeera.com/xml/rss/all.xml",
+    name: "Google News CN / 全红婵 跳水",
+    url: buildGoogleNewsSearchFeed("全红婵 跳水", "zh"),
   },
   {
-    name: "The Guardian World",
-    url: "https://www.theguardian.com/world/rss",
+    name: "Google News EN / Quan Hongchan",
+    url: buildGoogleNewsSearchFeed("Quan Hongchan", "en"),
   },
 ];
 
-const DIRECT_PATTERNS = [
-  /strait of hormuz/i,
-  /\bhormuz\b/i,
-  /gulf of oman/i,
-];
+const DIRECT_PATTERNS = [/全红婵/u, /\bquan hongchan\b/i, /\bhongchan quan\b/i];
 
 const CONTEXTUAL_PATTERNS = [
-  /\biran\b/i,
-  /\btanker\b/i,
-  /\bshipping\b/i,
-  /\boil\b/i,
-  /\blng\b/i,
-  /\bnavy\b/i,
-  /\bpersian gulf\b/i,
-  /\bgulf\b/i,
-  /\benergy\b/i,
+  /跳水/u,
+  /女子\s*10米台/u,
+  /世界杯/u,
+  /世锦赛/u,
+  /奥运/u,
+  /预赛/u,
+  /决赛/u,
+  /采访/u,
+  /训练/u,
+  /\bdiving\b/i,
+  /\b10m platform\b/i,
+  /\bworld cup\b/i,
+  /\bchampionships?\b/i,
+  /\bfinal\b/i,
+  /\binterview\b/i,
+  /\btraining\b/i,
+  /\bcoach\b/i,
 ];
 
 const TAGS = {
   en: {
-    security: "Security",
-    shipping: "Shipping",
-    energy: "Energy",
-    diplomacy: "Diplomacy",
-    briefing: "Desk briefing",
+    competition: "Competition",
+    interview: "Training / Interview",
+    technique: "Technique Talk",
+    profile: "Profile Watch",
+    briefing: "Desk Briefing",
   },
   zh: {
-    security: "安全",
-    shipping: "航运",
-    energy: "能源",
-    diplomacy: "外交",
-    briefing: "站内简报",
+    competition: "赛事",
+    interview: "训练 / 采访",
+    technique: "动作讨论",
+    profile: "人物观察",
+    briefing: "站内文章",
   },
 };
 
@@ -100,11 +112,11 @@ const allMatches = (xml: string, pattern: RegExp) =>
 const normalizeUrl = (url: string) => url.replace(/^http:\/\//i, "https://");
 
 const createId = (title: string, url: string) =>
-  `${title.toLowerCase().replace(/[^a-z0-9]+/gi, "-")}-${url
+  `${title.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/giu, "-")}-${url
     .toLowerCase()
     .replace(/[^a-z0-9]+/gi, "-")}`.slice(0, 120);
 
-const getScore = (title: string, summary: string) => {
+export const scoreQuanHongchanNews = (title: string, summary: string) => {
   const haystack = `${title} ${summary}`;
   const direct = DIRECT_PATTERNS.some((pattern) => pattern.test(haystack));
   const contextualHits = CONTEXTUAL_PATTERNS.reduce(
@@ -112,34 +124,43 @@ const getScore = (title: string, summary: string) => {
     0
   );
 
-  return (direct ? 10 : 0) + contextualHits;
+  return (direct ? 12 : 0) + contextualHits * 2;
 };
 
-const getTag = (locale: string, title: string, summary: string) => {
+export const classifyQuanHongchanNewsTag = (
+  locale: string,
+  title: string,
+  summary: string
+) => {
   const isZh = toFileLocale(locale) === "zh-cn";
   const labels = isZh ? TAGS.zh : TAGS.en;
   const haystack = `${title} ${summary}`.toLowerCase();
+  const haystackRaw = `${title} ${summary}`;
 
-  if (haystack.includes("tanker") || haystack.includes("shipping")) {
-    return labels.shipping;
-  }
   if (
-    haystack.includes("oil") ||
-    haystack.includes("lng") ||
-    haystack.includes("gas")
+    /采访|训练|备战|教练/u.test(haystackRaw) ||
+    /\binterview\b|\btraining\b|\bcoach\b|\bpractice\b/i.test(haystack)
   ) {
-    return labels.energy;
-  }
-  if (
-    haystack.includes("talks") ||
-    haystack.includes("sanction") ||
-    haystack.includes("summit") ||
-    haystack.includes("minister")
-  ) {
-    return labels.diplomacy;
+    return labels.interview;
   }
 
-  return labels.security;
+  if (
+    /入水|动作|难度|技术/u.test(haystackRaw) ||
+    /\btechnique\b|\bentry\b|\bsplash\b|\breplay\b/i.test(haystack)
+  ) {
+    return labels.technique;
+  }
+
+  if (
+    /比赛|决赛|预赛|冠军|世界杯|世锦赛|奥运/u.test(haystackRaw) ||
+    /\bfinal\b|\bprelim\b|\bchampionship\b|\bworld cup\b|\bolympic\b|\bmedal\b/i.test(
+      haystack
+    )
+  ) {
+    return labels.competition;
+  }
+
+  return labels.profile;
 };
 
 const parseRssItems = (xml: string, sourceName: string) => {
@@ -171,7 +192,7 @@ const parseRssItems = (xml: string, sourceName: string) => {
 
 const buildFallbackItems = (locale: string): HormuzNewsItem[] => {
   const labels = toFileLocale(locale) === "zh-cn" ? TAGS.zh : TAGS.en;
-  const localePrefix = locale === "en" ? "" : `/${locale}`;
+  const localePrefix = `/${locale}`;
 
   return getHormuzBriefings(locale).map((briefing) => ({
     id: `briefing-${briefing.slug}`,
@@ -219,15 +240,16 @@ export async function getHormuzNewsFeed(
       .flat()
       .map((item) => ({
         ...item,
-        score: getScore(item.title, item.summary),
+        score: scoreQuanHongchanNews(item.title, item.summary),
       }))
-      .filter((item) => item.score >= 2)
+      .filter((item) => item.score >= 12)
       .sort((a, b) => {
         const dateDelta =
           new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
         if (dateDelta !== 0) {
           return dateDelta;
         }
+
         return b.score - a.score;
       });
 
@@ -239,8 +261,8 @@ export async function getHormuzNewsFeed(
       if (seen.has(normalizedKey)) {
         continue;
       }
-      seen.add(normalizedKey);
 
+      seen.add(normalizedKey);
       deduped.push({
         id: createId(item.title, item.url),
         title: item.title,
@@ -248,7 +270,7 @@ export async function getHormuzNewsFeed(
         source: item.source,
         url: item.url,
         publishedAt: item.publishedAt,
-        tag: getTag(locale, item.title, item.summary),
+        tag: classifyQuanHongchanNewsTag(locale, item.title, item.summary),
         external: true,
       });
     }

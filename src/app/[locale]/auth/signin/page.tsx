@@ -34,7 +34,7 @@ export default async function SignInPage({
         >
           <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm text-primary-foreground">
             <NextImage
-              src="/brand/hormuz-logo.png"
+              src="/brand/quan-hong-chan-logo.svg"
               alt={copy.brand}
               width={20}
               height={20}

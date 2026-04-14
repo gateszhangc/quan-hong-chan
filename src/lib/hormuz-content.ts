@@ -1,4 +1,4 @@
-import { toFileLocale } from "@/i18n/locale";
+import { toFileLocale } from "../i18n/locale";
 
 type LocalizedText = {
   en: string;
@@ -37,422 +37,424 @@ export type HormuzBriefing = {
   }>;
 };
 
-const HORMUZ_BRIEFINGS: HormuzBriefingRecord[] = [
+const ATHLETE_BRIEFINGS: HormuzBriefingRecord[] = [
   {
-    slug: "where-is-the-strait-of-hormuz",
-    updatedAt: "2026-04-14T00:00:00.000Z",
-    readingMinutes: 6,
-    title: {
-      en: "Where Is the Strait of Hormuz and Why Does Geography Matter So Much?",
-      zh: "霍尔木兹海峡在哪里，为什么它的地理位置如此关键？",
-    },
-    description: {
-      en: "A compact explainer on the narrow waterway linking the Persian Gulf to the Gulf of Oman, and why a tiny passage can rattle the whole energy market.",
-      zh: "用一篇短文讲清楚这条连接波斯湾与阿曼湾的狭窄水道，以及为什么一个小小海峡足以牵动全球能源市场。",
-    },
-    kicker: {
-      en: "Map Room",
-      zh: "地理底图",
-    },
-    category: {
-      en: "Geography",
-      zh: "地理",
-    },
-    bullets: [
-      {
-        en: "The strait is the only sea exit for most Gulf oil exporters.",
-        zh: "这条海峡是多数海湾产油国通向外海的唯一海上出口。",
-      },
-      {
-        en: "Inbound and outbound shipping lanes are narrow and highly choreographed.",
-        zh: "进出海峡的航道非常狭窄，航行秩序高度依赖规则与协同。",
-      },
-      {
-        en: "Even a temporary disruption forces rerouting, insurance repricing, and tanker hesitation.",
-        zh: "即便只是短时扰动，也会迅速推高保险、改变航线并让油轮观望。",
-      },
-    ],
-    markdown: {
-      en: `
-The **Strait of Hormuz** is the slim maritime corridor between Iran to the north and Oman to the south. It links the **Persian Gulf** with the **Gulf of Oman** and then the **Arabian Sea**.
-
-That sounds simple, but the consequence is enormous: if you want to move crude oil, refined products, or LNG from much of the Gulf to open ocean shipping routes, you almost always pass through this chokepoint.
-
-## Why traders obsess over the map
-
-This is not just a narrow body of water. It is a place where:
-
-- energy flows concentrate into a tiny passage
-- civilian tankers share space with naval patrols
-- sanctions, diplomacy, and military signaling all collide
-
-Britannica notes that the passage is only **35 to 60 miles wide**, while the actual inbound and outbound shipping lanes are much tighter. That means headlines about threats, inspections, drone incidents, or naval escorts can matter immediately, even before any full closure occurs.
-
-## What the market reads from geography
-
-Markets do not wait for a formal blockade. They react to smaller signals:
-
-1. tanker owners delaying transit
-2. insurers raising war-risk premiums
-3. buyers demanding wider safety margins
-4. officials warning of “monitoring” or “response” operations
-
-That is why the Strait of Hormuz behaves like a compression chamber. It takes regional tension and converts it into globally visible price action.
-      `,
-      zh: `
-**霍尔木兹海峡** 位于伊朗以南、阿曼以北，是连接 **波斯湾** 与 **阿曼湾**、进一步通向 **阿拉伯海** 的狭窄水道。
-
-这一定义看起来很普通，但它的现实意义极大：海湾多数原油、成品油与 LNG 若要进入全球海运主干线，几乎都必须经过这里。
-
-## 为什么市场总是盯着这张地图
-
-它不是一条普通海峡，而是一个高度压缩的地缘节点：
-
-- 能源流量被挤压到极窄通道中
-- 民用油轮与海军巡逻长期共处
-- 制裁、外交与军事信号在这里重叠
-
-Britannica 提到，这条海峡整体宽度大约只有 **35 到 60 英里**，而真正用于进出航行的通道更窄。这意味着市场并不需要等到“正式封锁”才会反应，任何威胁、检查、无人机事件或护航升级，都可能立即改变预期。
-
-## 地理如何变成价格
-
-市场最先读取的不是声明，而是摩擦信号：
-
-1. 油轮是否延迟过境
-2. 战争风险保险是否上调
-3. 买家是否要求更高安全折价
-4. 官方是否释放“监控”或“应对行动”的措辞
-
-所以，霍尔木兹海峡像一个地缘压力舱。中东局势的微小变化，会被它迅速放大成全球油价与航运情绪的波动。
-      `,
-    },
-    references: [
-      {
-        label: {
-          en: "Britannica: Strait of Hormuz facts",
-          zh: "Britannica：霍尔木兹海峡事实页",
-        },
-        url: "https://www.britannica.com/place/Strait-of-Hormuz",
-      },
-    ],
-  },
-  {
-    slug: "why-hormuz-moves-oil-and-lng-markets",
-    updatedAt: "2026-04-14T00:00:00.000Z",
-    readingMinutes: 7,
-    title: {
-      en: "Why the Strait of Hormuz Moves Oil and LNG Markets",
-      zh: "为什么霍尔木兹海峡会牵动原油与 LNG 市场？",
-    },
-    description: {
-      en: "The transmission mechanism from tanker traffic to Brent, freight, insurance, and refinery sentiment.",
-      zh: "从油轮流量到布伦特油价、运费、保险与炼厂情绪，这条链条是如何传导的。",
-    },
-    kicker: {
-      en: "Energy Desk",
-      zh: "能源观察",
-    },
-    category: {
-      en: "Energy",
-      zh: "能源",
-    },
-    bullets: [
-      {
-        en: "More than 20% of global oil and LNG exports move through the strait.",
-        zh: "全球超过 20% 的石油与 LNG 出口要经过这条海峡。",
-      },
-      {
-        en: "Risk premiums often move before physical supply is fully interrupted.",
-        zh: "在实物流真正中断之前，风险溢价通常已经开始上升。",
-      },
-      {
-        en: "Freight and insurance can tighten faster than benchmark crude reacts.",
-        zh: "运费与保险成本有时比基准油价反应更快。",
-      },
-    ],
-    markdown: {
-      en: `
-For energy markets, the Strait of Hormuz is not just a map feature. It is a **pricing node**.
-
-Britannica summarizes the basic fact plainly: **more than 20 percent of global oil and LNG exports** pass through the strait. That makes it one of the world’s highest-consequence maritime chokepoints.
-
-## What actually moves first
-
-When tension rises, markets usually react in layers:
-
-1. **Shipping sentiment** changes first. Owners slow decisions, charterers ask for more detail, and voyage assumptions become conservative.
-2. **Insurance premiums** jump next. War-risk coverage can widen even if ships are still moving.
-3. **Freight rates and delivery assumptions** begin to wobble.
-4. **Oil benchmarks** price in risk, not just lost barrels.
-
-This matters because energy markets price **probability**, not only confirmed disruption.
-
-## Why LNG watches Hormuz too
-
-The global gas market is also exposed. LNG cargoes out of Qatar and the broader Gulf region depend on stable transit. If confidence drops, buyers in Asia and Europe immediately think about replacement cargoes, optionality, and terminal planning.
-
-## The key takeaway
-
-The market question is rarely “Is the strait closed right now?”
-
-The real question is: **How expensive does it become to believe transit remains safe?**
-
-That is why even diplomatic language, convoy announcements, or naval posture changes can move the tape. Hormuz is where physical trade and geopolitical narrative price each other in real time.
-      `,
-      zh: `
-对能源市场来说，霍尔木兹海峡不是一个地理注释，而是一个真正的 **定价节点**。
-
-Britannica 的概括非常直接：**全球超过 20% 的石油与 LNG 出口** 要经过这条海峡。这让它成为全球后果最严重的海上咽喉点之一。
-
-## 市场最先动的是什么
-
-当地缘风险升高时，市场通常按层传导：
-
-1. **航运情绪** 最先变化。船东开始拖延决策，租船方要求更多安全信息。
-2. **保险溢价** 紧接着上升。即使船还在走，战争险也可能先抬价。
-3. **运费与交付假设** 开始摇摆。
-4. **油价基准** 最终为风险而非实际减产定价。
-
-这意味着，能源市场交易的是 **概率**，不是等到供给中断再反应。
-
-## 为什么 LNG 也高度敏感
-
-天然气市场同样暴露在这条海峡之下。来自卡塔尔与更广泛海湾地区的 LNG 货船依赖稳定通行。一旦安全感下降，亚洲与欧洲买家会立即重新计算替代货源、接收站安排与采购节奏。
-
-## 核心结论
-
-市场真正关心的，往往不是“海峡此刻是否已经关闭”，而是：
-
-**继续相信它能安全通行，到底会变得多贵？**
-
-因此，外交措辞、护航通告、海军部署乃至检查动作，都会迅速传导到价格。霍尔木兹海峡就是这样一个让实物流与地缘叙事实时互相定价的地方。
-      `,
-    },
-    references: [
-      {
-        label: {
-          en: "Britannica: Hormuz and global oil exports",
-          zh: "Britannica：霍尔木兹与全球油气出口",
-        },
-        url: "https://www.britannica.com/place/Strait-of-Hormuz",
-      },
-    ],
-  },
-  {
-    slug: "shipping-risk-signals-to-watch",
-    updatedAt: "2026-04-14T00:00:00.000Z",
-    readingMinutes: 6,
-    title: {
-      en: "Shipping Risk Signals to Watch Around Hormuz",
-      zh: "围绕霍尔木兹海峡，哪些航运风险信号最值得盯？",
-    },
-    description: {
-      en: "A working checklist for shipowners, traders, analysts, and anyone tracking how maritime stress shows up before a full-scale disruption.",
-      zh: "给船东、交易员与分析师的一份实用清单：在全面中断前，海上压力通常会如何先暴露出来。",
-    },
-    kicker: {
-      en: "Shipping",
-      zh: "航运",
-    },
-    category: {
-      en: "Maritime Risk",
-      zh: "航运风险",
-    },
-    bullets: [
-      {
-        en: "Watch for convoy talk, rerouting, and unusual pauses near the Gulf of Oman.",
-        zh: "优先盯住护航、绕航和阿曼湾附近的异常停顿。",
-      },
-      {
-        en: "Insurance and charter language often changes before traffic data does.",
-        zh: "保险与租船措辞的变化，往往早于流量数据本身。",
-      },
-      {
-        en: "A scare can tighten cost and timing even if barrels still move.",
-        zh: "即便油轮仍在通行，恐慌也会先推高成本并扰乱时效。",
-      },
-    ],
-    markdown: {
-      en: `
-Shipping stress rarely announces itself with one dramatic switch. It usually appears as a sequence of smaller frictions.
-
-## The first layer: language
-
-Pay attention to official wording:
-
-- “monitoring”
-- “escort”
-- “protection mission”
-- “heightened vigilance”
-- “temporary routing advice”
-
-These phrases often mean operators are trying to preserve flow while acknowledging a worsening security backdrop.
-
-## The second layer: behavior
-
-Watch for:
-
-- ships slowing before the chokepoint
-- clustering outside the Gulf
-- repeated delays in departure timing
-- sudden interest in alternative export routes
-
-None of these alone proves a closure threat. Together, they show that commercial actors are attaching a cost to uncertainty.
-
-## The third layer: money
-
-Markets often notice stress through:
-
-- higher war-risk insurance
-- firmer freight quotations
-- wider crude differentials
-- talk of “optional” or “flexible” scheduling
-
-This is why Hormuz monitoring is not only about headlines. It is about reading changes in shipping behavior before they become visible in supply statistics.
-      `,
-      zh: `
-航运压力通常不会以“一键切换”的方式出现，而更像一串逐渐叠加的小摩擦。
-
-## 第一层：措辞变化
-
-要特别留意官方和行业常用词是否开始变化：
-
-- “监控中”
-- “护航”
-- “保护行动”
-- “提高警戒”
-- “临时绕航建议”
-
-这些词往往意味着，参与者仍想维持流动，但已经承认安全环境在恶化。
-
-## 第二层：行为变化
-
-重点看这些现象：
-
-- 船只在咽喉口外降速
-- 海湾外缘出现聚集等待
-- 出发时间多次延后
-- 市场突然讨论替代出口路线
-
-单个现象不一定代表即将封锁，但如果它们叠加出现，说明商业主体已经在为“不确定性”定价。
-
-## 第三层：资金变化
-
-真正的压力常常先体现在：
-
-- 战争险上涨
-- 运费报价走强
-- 原油价差扩大
-- 合同开始强调“可选”“弹性排期”
-
-因此，监测霍尔木兹海峡并不只是看新闻标题，更是在观察航运行为如何先于供给统计发生变化。
-      `,
-    },
-    references: [
-      {
-        label: {
-          en: "Britannica: Shipping lanes and legal status",
-          zh: "Britannica：航道与国际法地位",
-        },
-        url: "https://www.britannica.com/place/Strait-of-Hormuz",
-      },
-    ],
-  },
-  {
-    slug: "what-a-closure-scare-means-for-traders",
+    slug: "who-is-quan-hongchan",
     updatedAt: "2026-04-14T00:00:00.000Z",
     readingMinutes: 5,
     title: {
-      en: "What a Hormuz Closure Scare Actually Means for Traders",
-      zh: "一次“霍尔木兹可能关闭”的恐慌，对交易员到底意味着什么？",
+      en: "Who Is Quan Hongchan and Why Does She Keep Pulling So Much Attention?",
+      zh: "全红婵是谁，为什么她总能持续占据公众视线？",
     },
     description: {
-      en: "Closure scares are usually about repricing risk, not instant zero-flow outcomes. Here is how to read the difference.",
-      zh: "所谓“海峡可能关闭”的恐慌，更多是风险重估，而不是立刻归零的通行结果。要读懂两者差别。",
+      en: "A short profile on why Quan Hongchan sits at the intersection of elite results, rare technique, and mass public attention.",
+      zh: "从顶级成绩、罕见技术表现到大众传播势能，这篇短文梳理全红婵为何始终处在跳水话题中心。",
     },
     kicker: {
-      en: "Market Structure",
-      zh: "市场结构",
+      en: "Profile",
+      zh: "人物速写",
     },
     category: {
-      en: "Risk Pricing",
-      zh: "风险定价",
+      en: "Athlete Watch",
+      zh: "人物观察",
     },
     bullets: [
       {
-        en: "Headline risk can outrun physical disruption by days or weeks.",
-        zh: "新闻层面的恐慌，可能提前数天甚至数周跑在实物中断之前。",
+        en: "She is followed not only for medals, but for how instantly her performance reads on screen.",
+        zh: "大家关注她，不只是因为成绩，也因为她的动作在镜头里具有极强的即时辨识度。",
       },
       {
-        en: "Price action often reflects insurance, timing, and confidence shocks.",
-        zh: "价格波动往往反映的是保险、时效与信心冲击。",
+        en: "Official reports repeatedly frame her results as part of China diving's headline story.",
+        zh: "官方赛事报道经常把她的表现放在中国跳水整体叙事的中心位置。",
       },
       {
-        en: "Exact dates matter: June 22, 2025 was one such moment of market fear.",
-        zh: "具体日期很重要：2025 年 6 月 22 日就是一次典型的市场恐慌节点。",
+        en: "Her news value usually mixes competitive outcome, technical discussion, and personal growth.",
+        zh: "她的新闻价值通常同时包含比赛结果、技术讨论和成长叙事三条线。",
       },
     ],
     markdown: {
       en: `
-When people say “Hormuz might close,” the market almost never interprets that as a clean binary event.
+Quan Hongchan is one of the rare athletes whose coverage travels far beyond specialist sport audiences. People follow her because the results are major, but also because the visual experience of watching her dive is unusually immediate: even casual viewers can tell when a performance feels clean, fast, and controlled.
 
-Instead, traders ask three narrower questions:
+## Why the attention compounds
 
-1. Will vessels hesitate?
-2. Will costs jump?
-3. Will policy language force faster repricing than fundamentals justify?
+The attention around her usually stacks from three layers:
 
-## Why dates matter
+1. major-meet performance
+2. technique that creates instant replay value
+3. a public narrative about growth, pressure, and composure
 
-Britannica notes that after **U.S. strikes on Iran’s nuclear facilities on June 22, 2025**, Iran’s parliament authorized a closure move that still required approval from the country’s Supreme National Security Council. Even without an executed closure, the fear itself mattered.
+That combination is why her name often moves from sports pages into broader general-news circulation.
 
-That is the point. The market often trades the **credible possibility** of disruption before it trades confirmed interruption.
+## The dates worth remembering
 
-## What to monitor in a scare
+On **August 5, 2021**, World Aquatics published a feature describing her as a 14-year-old Olympic champion whose rise had already become a national story. On **August 6, 2024**, World Aquatics covered the Paris Olympic women's 10m platform final and again placed Quan Hongchan and Chen Yuxi at the center of the biggest diving headline of the day.
 
-- freight and insurance
-- tanker waiting patterns
-- official escalation language
-- refinery procurement urgency
-- emergency statements from consuming countries
+Those dates matter because they show the pattern clearly: Quan Hongchan is covered not as a one-off sensation, but as a repeat headline figure whenever the sport reaches its highest-stakes stage.
 
-The smartest read is not “closed / open.” It is: **how far did the risk premium travel, and which part of the supply chain absorbed it first?**
+## A better way to read the coverage
+
+When her name trends, the useful question is not only "What medal did she win?"
+
+The better question is: **Which of the three layers is driving this cycle of attention: result, technique, or personal narrative?**
       `,
       zh: `
-当市场说“霍尔木兹可能关闭”时，它几乎不会把这件事理解成一个简单的二元开关。
+全红婵是少数能同时跨出专业体育圈与大众新闻圈的运动员。大家追她，不只是因为成绩重要，还因为她的动作观感极强，哪怕并不熟悉跳水规则的观众，也往往能立刻感受到她的节奏、控制和入水质量。
 
-交易员真正会问的是三个更细的问题：
+## 为什么她的关注度会不断叠加
 
-1. 船会不会开始犹豫？
-2. 成本会不会先跳？
-3. 政策措辞会不会逼着市场比基本面更快重定价？
+围绕她的讨论，通常来自三层叠加：
 
-## 为什么具体日期要说清楚
+1. 大赛成绩
+2. 极具辨识度的技术表现
+3. 关于成长、压力与稳定性的公众叙事
 
-Britannica 提到，在 **2025 年 6 月 22 日美国打击伊朗核设施** 之后，伊朗议会曾授权关闭霍尔木兹海峡的动作，但该动作仍需更高层安全机构批准。即便最终没有真正实施，“可能关闭”本身也足以制造市场压力。
+正因为这三层同时存在，她的名字经常会从体育版面扩散到更广泛的大众新闻流里。
 
-这正是关键：市场交易的常常不是已经发生的中断，而是 **足够可信的中断可能性**。
+## 两个值得记住的时间点
 
-## 遇到这种恐慌，应该看什么
+**2021 年 8 月 5 日**，World Aquatics 发布专题，描述她以 14 岁奥运冠军身份迅速成为全国关注的焦点。**2024 年 8 月 6 日**，World Aquatics 报道巴黎奥运会女子 10 米台决赛时，再次把全红婵与陈芋汐置于当天跳水报道的核心位置。
 
-- 运费与保险
-- 油轮等待模式
-- 官方升级措辞
-- 炼厂补货紧迫度
-- 消费国是否开始释放应急表态
+这两个时间点说明的不是一次偶然爆发，而是一种稳定模式：只要比赛进入高关注节点，全红婵就会重新成为新闻中心人物。
 
-真正高水平的判断，不是只问“关没关”，而是问：
+## 读她的新闻，不能只看奖牌
 
-**风险溢价已经传到了哪一段链条，谁最先为它买单？**
+真正更有用的问题不是“她今天拿了什么牌”，而是：
+
+**这轮关注，究竟是由结果、技术，还是人物叙事在推动？**
       `,
     },
     references: [
       {
         label: {
-          en: "Britannica: June 22, 2025 closure scare context",
-          zh: "Britannica：2025 年 6 月 22 日封锁恐慌背景",
+          en: "World Aquatics: 14-year-old Olympic champion Quan jumps out from hopscotch game",
+          zh: "World Aquatics：14 岁奥运冠军全红婵的成名专题",
         },
-        url: "https://www.britannica.com/place/Strait-of-Hormuz",
+        url: "https://www.worldaquatics.com/news/2221032/14-year-old-olympic-champion-quan-jumps-out-from-hopscotch-game",
+      },
+      {
+        label: {
+          en: "World Aquatics: Quan Hongchan and Chen Yuxi headline Paris 2024 platform final",
+          zh: "World Aquatics：巴黎 2024 女子 10 米台决赛官方报道",
+        },
+        url: "https://www.worldaquatics.com/news/4072052/chen-yuxi-quan-hongchan-fourth-gold-diving-china-paris-2024-olympic-games",
+      },
+    ],
+  },
+  {
+    slug: "why-her-entry-looks-so-clean",
+    updatedAt: "2026-04-14T00:00:00.000Z",
+    readingMinutes: 6,
+    title: {
+      en: "Why Does Quan Hongchan's Entry Look So Clean on Video?",
+      zh: "为什么全红婵的入水总能给人“几乎没有水花”的感觉？",
+    },
+    description: {
+      en: "A practical explanation of why her dives create such strong replay value even for people who do not follow diving closely.",
+      zh: "这篇文章解释，全红婵的动作为什么会产生极强的回看价值，即使是不常看跳水的人也能马上记住。",
+    },
+    kicker: {
+      en: "Technique",
+      zh: "技术观察",
+    },
+    category: {
+      en: "Dive Technique",
+      zh: "动作细节",
+    },
+    bullets: [
+      {
+        en: "Her public visibility is tied to how easy it is for viewers to perceive control and tightness.",
+        zh: "她的公共传播力，和观众很容易直观看到“紧”和“稳”有直接关系。",
+      },
+      {
+        en: "The replay moment matters: slow-motion clips make the difference legible.",
+        zh: "慢镜头非常关键，它把技术差异转成了所有人都能看懂的画面差异。",
+      },
+      {
+        en: "Technical discussion is one of the main reasons her coverage stays active between events.",
+        zh: "技术讨论是她在非比赛日依然保持热度的重要原因之一。",
+      },
+    ],
+    markdown: {
+      en: `
+Quan Hongchan's most replayed moments are not random. They sit at the point where elite technique becomes visible to non-specialists.
+
+## What ordinary viewers actually notice
+
+Even without judging knowledge, people can usually spot three things:
+
+- how little the body line wobbles
+- how quickly the motion finishes
+- how restrained the splash looks after entry
+
+That is why her dives travel well on short clips and social platforms. The quality is not hidden inside a score sheet. It is visible in the image itself.
+
+## Why this matters for news tracking
+
+Coverage around Quan Hongchan is often stronger than the raw competition schedule alone would suggest. Technical clips, coach breakdowns, broadcast replays, and side-by-side comparisons keep the conversation alive between finals.
+
+This means that when her name spikes, the trigger may not be a medal table update. It may be a clip, an explanation, or a renewed conversation about why her entries look different.
+
+## The useful reading habit
+
+When you see her trend, ask:
+
+**Is this a result-driven news spike, or a technique-driven replay cycle?**
+
+That distinction helps explain why some Quan Hongchan stories feel like competition news, while others behave more like culture news.
+      `,
+      zh: `
+全红婵最容易被反复传播的时刻，并不是偶然。她的动作处在一个非常少见的位置上：专业技术已经高到极致，但这种差异又能被非专业观众直接看到。
+
+## 普通观众真正会注意到什么
+
+就算不懂评分规则，很多人也能马上看见三件事：
+
+- 身体线条是否紧
+- 动作结束得是否干净利落
+- 入水之后水花是否被压得非常克制
+
+这就是为什么她的动作特别适合被短视频、慢镜头和回放反复传播。它的质量并不只藏在分数里，而是直接写在画面里。
+
+## 这对追新闻有什么意义
+
+围绕全红婵的关注，常常比单纯的赛程节奏更长。技术拆解、教练点评、转播回放、对比剪辑，会让讨论在比赛之外继续发酵。
+
+所以，当她的名字突然升温时，触发点不一定是奖牌榜更新，也可能是一个动作片段、一次专业解释，或者一轮关于“为什么她的入水看起来就是不一样”的重新讨论。
+
+## 更有效的阅读习惯
+
+当你看到她上热搜时，可以先问一句：
+
+**这次是成绩型新闻，还是技术型传播？**
+
+分清这一点，才能理解为什么有些全红婵报道更像赛场新闻，而有些更像大众文化事件。
+      `,
+    },
+    references: [
+      {
+        label: {
+          en: "World Aquatics athlete profile",
+          zh: "World Aquatics：全红婵运动员资料页",
+        },
+        url: "https://www.worldaquatics.com/athletes/1528691/quan-hongchan",
+      },
+      {
+        label: {
+          en: "World Aquatics: Paris 2024 women's platform final coverage",
+          zh: "World Aquatics：巴黎 2024 女子 10 米台决赛报道",
+        },
+        url: "https://www.worldaquatics.com/news/4072052/chen-yuxi-quan-hongchan-fourth-gold-diving-china-paris-2024-olympic-games",
+      },
+    ],
+  },
+  {
+    slug: "how-to-read-quan-hongchan-news",
+    updatedAt: "2026-04-14T00:00:00.000Z",
+    readingMinutes: 6,
+    title: {
+      en: "How Should You Read the Daily Quan Hongchan News Cycle?",
+      zh: "每天追全红婵新闻，真正值得看的信号有哪些？",
+    },
+    description: {
+      en: "A simple framework for separating high-signal updates from generic traffic around Quan Hongchan.",
+      zh: "用一个简单框架，把围绕全红婵的高信号更新和泛流量噪音区分开来。",
+    },
+    kicker: {
+      en: "News Framework",
+      zh: "新闻框架",
+    },
+    category: {
+      en: "Signal Reading",
+      zh: "信号判断",
+    },
+    bullets: [
+      {
+        en: "Start with competition schedules and official result pages before reading secondary commentary.",
+        zh: "先看赛程和官方成绩页，再看二级评论和转述内容。",
+      },
+      {
+        en: "Interviews and training notes often change the narrative even when no final is taking place.",
+        zh: "采访和训练信息，即使不发生在决赛日，也会明显改变这一轮舆论叙事。",
+      },
+      {
+        en: "One strong clip can drive coverage volume, but not every clip changes the competitive picture.",
+        zh: "一个高传播片段可以带来大量报道，但不代表竞技状态本身已经发生根本变化。",
+      },
+    ],
+    markdown: {
+      en: `
+The Quan Hongchan news cycle usually moves faster than the actual competition calendar. That is why a useful reading method matters.
+
+## Read the day in this order
+
+1. official schedule or result
+2. coach, teammate, or athlete quote
+3. technical clip or replay
+4. broader public discussion
+
+If you reverse that order, you end up mistaking noise for change.
+
+## Why official dates matter
+
+On **May 2, 2025**, World Aquatics reported from the Beijing Super Final and placed Quan Hongchan inside a broader story about China's continued strength in diving. On **July 31, 2025**, World Aquatics covered the women's 10m platform final at the Singapore world championships and made clear that the headline belonged elsewhere that day.
+
+Those dates show why official event framing matters: it tells you whether Quan Hongchan is the center of the competitive story, adjacent to it, or absent from the final result altogether.
+
+## The high-signal questions
+
+Before you react to a wave of coverage, ask:
+
+- Did an official result change?
+- Did a credible interview change the storyline?
+- Is this only a replay cycle with no new competition information?
+
+Those three questions keep the daily news flow readable.
+      `,
+      zh: `
+围绕全红婵的新闻流，往往比真正的比赛日历跑得更快。所以，要想看懂每天的信息，必须先有一个读法。
+
+## 每天最好按这个顺序读
+
+1. 官方赛程或成绩
+2. 教练、队友、本人采访
+3. 技术片段或转播回放
+4. 更大范围的公共讨论
+
+如果顺序反过来，就很容易把热度误读成变化。
+
+## 为什么官方日期必须说清楚
+
+**2025 年 5 月 2 日**，World Aquatics 报道北京 Super Final 时，把全红婵放进了中国跳水整体优势的主线里。**2025 年 7 月 31 日**，World Aquatics 在新加坡世锦赛女子 10 米台决赛报道里，则清楚显示当天的竞争焦点并不完全由她主导。
+
+这两个日期说明，官方赛事报道最重要的价值，不是“热不热”，而是告诉你：全红婵此刻到底是这条竞争主线的中心人物、侧面人物，还是根本没有进入当天的最终结果核心。
+
+## 更高信号的三个问题
+
+当你准备对一轮报道做判断时，先问：
+
+- 官方结果有没有变化？
+- 可信采访有没有改变叙事方向？
+- 这次是不是只有高传播片段，并没有新增比赛信息？
+
+把这三个问题问清楚，每天追全红婵新闻就会稳定得多。
+      `,
+    },
+    references: [
+      {
+        label: {
+          en: "World Aquatics: Beijing Super Final day-one report",
+          zh: "World Aquatics：北京 Super Final 首日报道",
+        },
+        url: "https://www.worldaquatics.com/news/4257839/diving-world-aquatics-world-cup-2025-beijing-china-five-golds-day-1-super-final",
+      },
+      {
+        label: {
+          en: "World Aquatics: Singapore 2025 women's platform final report",
+          zh: "World Aquatics：新加坡 2025 女子 10 米台决赛报道",
+        },
+        url: "https://www.worldaquatics.com/news/4380796/world-aquatics-championships-singapore-2025-diving-day-eight-chen-yuxi-rues-2024-setback-with-world-title",
+      },
+    ],
+  },
+  {
+    slug: "why-quan-hongchan-stays-a-headline",
+    updatedAt: "2026-04-14T00:00:00.000Z",
+    readingMinutes: 5,
+    title: {
+      en: "Why Does Quan Hongchan Stay in the Headlines Even Between Finals?",
+      zh: "为什么即使不在决赛日，全红婵也常常还在头条里？",
+    },
+    description: {
+      en: "A look at how major-meet timing, growth narratives, and repeatable visual moments keep her coverage active.",
+      zh: "这篇文章解释，大赛节奏、成长叙事和可重复传播的动作画面，为什么会让她在非决赛日也保持话题密度。",
+    },
+    kicker: {
+      en: "Media Logic",
+      zh: "传播逻辑",
+    },
+    category: {
+      en: "Headline Dynamics",
+      zh: "话题机制",
+    },
+    bullets: [
+      {
+        en: "Some athletes trend only on result day. Quan Hongchan often trends before and after the final as well.",
+        zh: "有些运动员只在结果当天被讨论，而全红婵往往会在赛前、赛后都持续被关注。",
+      },
+      {
+        en: "Growth and adaptation stories give reporters a second narrative beyond medals.",
+        zh: "关于身体成长与状态调整的报道，为媒体提供了奖牌之外的第二条叙事线。",
+      },
+      {
+        en: "That extra narrative layer is one reason her coverage spills into mainstream news feeds.",
+        zh: "正是这层额外叙事，让她的报道更容易溢出到大众新闻流。",
+      },
+    ],
+    markdown: {
+      en: `
+Quan Hongchan often stays visible even when the calendar between finals looks quiet. That is not accidental. It comes from a specific media structure.
+
+## Three forces keep her visible
+
+- big-event timing
+- visual replay value
+- a continuing growth story
+
+If only one of those existed, the attention would fade much faster. Together, they keep the storyline open.
+
+## Why growth keeps returning to the coverage
+
+On **May 3, 2025**, World Aquatics quoted Quan Hongchan after Beijing Super Final competition speaking about adapting to changes in height and weight. That kind of official post-event remark is important because it extends the conversation beyond the scoreline. It turns one result into a continuing story about adjustment, timing, and self-control.
+
+## The practical takeaway
+
+When her name returns to the top of the feed, it often means the news cycle has found one of two engines:
+
+1. a new result
+2. a new interpretation of the same athlete story
+
+Reading that distinction correctly helps explain why some days feel like hard competition coverage, while others feel like a wider public conversation about the athlete herself.
+      `,
+      zh: `
+全红婵经常会在“并没有决赛”的时候，依然保持可见度。这并不偶然，而是一种非常明确的传播结构在起作用。
+
+## 让她持续被看见的三股力量
+
+- 大赛节点
+- 动作回放价值
+- 持续存在的成长叙事
+
+如果只有其中一项，热度衰减会快得多。正因为三者同时存在，这条叙事线才会一直开着。
+
+## 为什么“成长变化”总会反复进入报道
+
+**2025 年 5 月 3 日**，World Aquatics 在北京 Super Final 赛后报道里引用了全红婵关于身高和体重变化、以及自己仍在适应这些变化的表述。这样的官方赛后表达很重要，因为它把一次比赛结果延长成了一个持续故事：不是只看分数，而是看她如何调整身体、节奏和稳定性。
+
+## 更实用的结论
+
+当她的名字再次回到信息流顶部时，通常意味着新闻引擎来自两种之一：
+
+1. 有了新的比赛结果
+2. 媒体又找到了理解这位运动员的新角度
+
+把这两种驱动力分清楚，就能解释为什么有些时候她的报道是纯竞技新闻，而有些时候更像一次更广泛的人物公共讨论。
+      `,
+    },
+    references: [
+      {
+        label: {
+          en: "World Aquatics: Beijing Super Final day-two report",
+          zh: "World Aquatics：北京 Super Final 第二日报道",
+        },
+        url: "https://www.worldaquatics.com/news/4258435/diving-world-aquatics-world-cup-super-final-2025-day-2consistent-excellence-wang-zongyuan-chen-yuxi",
+      },
+      {
+        label: {
+          en: "World Aquatics athlete profile",
+          zh: "World Aquatics：全红婵运动员资料页",
+        },
+        url: "https://www.worldaquatics.com/athletes/1528691/quan-hongchan",
       },
     ],
   },
@@ -468,148 +470,155 @@ export const getHormuzSiteCopy = (locale: string) => {
 
   return {
     localeLabel: isZh ? "简体中文" : "English",
-    brand: isZh ? "霍尔木兹海峡" : "Hormuz Strait News",
+    brand: isZh ? "全红婵观察" : "Quan Hongchan Watch",
     brandLong: isZh
-      ? "霍尔木兹海峡实时新闻与风险观察"
-      : "Real-time headlines and risk intelligence around the Strait of Hormuz",
+      ? "全红婵最新新闻、赛事动态与人物观察"
+      : "Latest news, competition updates, and profile notes on Quan Hongchan",
     metadataTitle: isZh
-      ? "霍尔木兹海峡实时新闻与风险观察"
-      : "Hormuz Strait News, Shipping Risk and Energy Market Watch",
+      ? "全红婵最新新闻、赛事动态与人物观察"
+      : "Quan Hongchan Latest News, Diving Results, and Profile Watch",
     metadataDescription: isZh
-      ? "追踪霍尔木兹海峡的最新新闻、航运风险、油气市场影响与深度解读。"
-      : "Track the latest Strait of Hormuz headlines, shipping risk, energy market impact, and deeper briefings in one place.",
+      ? "追踪全红婵的最新新闻、跳水赛事动态、采访片段与人物观察。"
+      : "Track Quan Hongchan's latest news, diving results, interviews, and profile-driven coverage in one place.",
     metadataKeywords: isZh
-      ? "霍尔木兹海峡, 霍尔木兹海峡新闻, 伊朗海峡, 原油运输, 油轮风险, 海湾能源"
-      : "Strait of Hormuz news, Hormuz Strait latest headlines, Gulf shipping risk, oil market chokepoint, Iran tanker news",
+      ? "全红婵, 全红婵最新新闻, 全红婵跳水, 全红婵比赛, 跳水新闻"
+      : "Quan Hongchan latest news, Quan Hongchan diving, Quan Hongchan results, Chinese diving news, women platform diving",
     liveBadge: isZh ? "实时监测" : "Live watch",
-    heroEyebrow: isZh ? "全球能源咽喉" : "The world's tightest energy chokepoint",
+    heroEyebrow: isZh ? "跳水人物观察站" : "Diving profile watch",
     heroTitle: isZh
-      ? "把霍尔木兹海峡的新闻、航运风险与能源冲击放到同一张桌面上。"
-      : "Put Hormuz headlines, shipping risk, and energy-market spillovers on one screen.",
+      ? "把全红婵的最新新闻、比赛节点与人物线索放到同一张桌面上。"
+      : "Put Quan Hongchan's latest news, competition milestones, and profile signals on one screen.",
     heroDescription: isZh
-      ? "这不是泛中东新闻聚合，而是围绕霍尔木兹海峡的专门观察站：你会看到过境风险、外交升级、油轮信号与能源市场反馈如何互相牵动。"
-      : "This is not a generic Middle East roundup. It is a focused watchtower for the Strait of Hormuz, where transit risk, diplomacy, tanker signals, and energy-market reactions are read together.",
-    latestButton: isZh ? "查看最新头条" : "See latest headlines",
-    briefingsButton: isZh ? "阅读深度文章" : "Read briefings",
+      ? "这个站点聚焦全红婵相关的公开报道：先看最新消息，再看比赛、训练、采访和公众关注如何互相推动。"
+      : "This site follows public reporting around Quan Hongchan: start with the latest update, then trace how competition, training, interviews, and public attention move together.",
+    latestButton: isZh ? "查看最新消息" : "See latest updates",
+    briefingsButton: isZh ? "阅读人物文章" : "Read profile briefings",
     statCards: [
       {
         title: isZh ? "观察窗口" : "Coverage window",
-        value: isZh ? "过去 72 小时" : "Last 72 hours",
+        value: isZh ? "过去 7 天" : "Last 7 days",
         description: isZh
-          ? "优先聚合与海峡直接相关或高度相关的信号。"
-          : "Prioritizes direct and high-context signals tied to the strait.",
+          ? "优先聚合与全红婵直接相关的公开报道。"
+          : "Prioritizes public coverage directly tied to Quan Hongchan.",
       },
       {
         title: isZh ? "核心维度" : "Core lenses",
-        value: isZh ? "航运 / 能源 / 外交" : "Shipping / Energy / Diplomacy",
+        value: isZh ? "赛事 / 训练 / 采访" : "Competition / Training / Interviews",
         description: isZh
-          ? "用一个结构看同一事件的多重传导。"
-          : "Reads one event through multiple transmission channels.",
+          ? "把竞技结果和人物叙事放在同一条时间线上。"
+          : "Reads athletic results and athlete narrative on the same timeline.",
       },
       {
         title: isZh ? "阅读方式" : "Reading mode",
-        value: isZh ? "快讯 + 解释" : "Headlines + explainers",
+        value: isZh ? "快讯 + 背景" : "Updates + context",
         description: isZh
-          ? "既看快讯，也看为什么它重要。"
-          : "Not just what happened, but why it matters.",
+          ? "先看发生了什么，再看为什么会被持续传播。"
+          : "Start with what happened, then ask why it keeps circulating.",
       },
     ],
-    signalTitle: isZh ? "四个最该盯住的信号" : "Four signals worth watching first",
+    signalTitle: isZh ? "四个值得持续跟踪的焦点" : "Four angles worth tracking first",
     signalCards: [
       {
-        title: isZh ? "航运摩擦" : "Shipping friction",
+        title: isZh ? "赛事节点" : "Competition timing",
         description: isZh
-          ? "绕航、等待、护航与保险上调往往先出现。"
-          : "Rerouting, waiting patterns, escorts, and insurance moves often surface first.",
+          ? "报名、预赛、决赛和赛后采访，都会改变当天的新闻权重。"
+          : "Entries, prelims, finals, and post-event quotes all reshape the day's news weight.",
       },
       {
-        title: isZh ? "能源定价" : "Energy pricing",
+        title: isZh ? "动作讨论" : "Technique talk",
         description: isZh
-          ? "油价不只交易失去的桶数，也交易中断概率。"
-          : "Oil prices do not wait for lost barrels; they trade disruption probability.",
+          ? "动作回放和技术拆解，是她长期维持热度的重要来源。"
+          : "Replays and technical breakdowns are a major reason her coverage stays active.",
       },
       {
-        title: isZh ? "外交升级" : "Diplomatic escalation",
+        title: isZh ? "训练与采访" : "Training and interviews",
         description: isZh
-          ? "措辞升级、制裁与报复预期会先改变风险偏好。"
-          : "Language shifts, sanctions, and retaliation expectations alter risk appetite early.",
+          ? "没有比赛结果时，训练动态和采访经常会接管叙事。"
+          : "When there is no result to react to, training notes and interviews often take over the story.",
       },
       {
-        title: isZh ? "海军姿态" : "Naval posture",
+        title: isZh ? "公众热度" : "Public attention",
         description: isZh
-          ? "任何增援、护航、联合声明都可能放大市场解读。"
-          : "Reinforcement, escorts, and coalition statements can rapidly reshape expectations.",
+          ? "她的名字会在体育新闻和大众信息流之间不断来回穿透。"
+          : "Her name regularly crosses from sports coverage into the broader public feed.",
       },
     ],
-    latestTitle: isZh ? "最新头条" : "Latest headlines",
+    latestTitle: isZh ? "最新消息" : "Latest updates",
     latestDescription: isZh
-      ? "聚合公开新闻源里与霍尔木兹海峡最直接相关的报道，并用风险标签重新排序。"
-      : "Aggregates public reporting most directly connected to the Strait of Hormuz and reorders it through a risk lens.",
-    contextTitle: isZh ? "为什么这条海峡总会放大局势" : "Why this strait amplifies every crisis",
+      ? "优先聚合与全红婵直接相关的公开报道，中文新闻优先，再补充英文来源。"
+      : "Aggregates public coverage directly connected to Quan Hongchan, prioritizing Chinese-language reporting and then filling with English sources.",
+    contextTitle: isZh ? "为什么她总能持续占据关注中心" : "Why she keeps drawing repeat attention",
     contextCards: [
       {
-        title: isZh ? "它太窄" : "It is narrow",
+        title: isZh ? "动作观赏性" : "Visual clarity",
         description: isZh
-          ? "海量能源流量被压进极小通道，任何摩擦都会立刻可见。"
-          : "Huge energy flows are compressed into a tiny corridor, so friction becomes visible fast.",
+          ? "她的动作很容易被普通观众直接识别和记住。"
+          : "Even casual viewers can quickly identify and remember the visual quality of her dives.",
       },
       {
-        title: isZh ? "它太关键" : "It is essential",
+        title: isZh ? "大赛牵引" : "Big-meet gravity",
         description: isZh
-          ? "对多数海湾出口国来说，它不是可选路线，而是必经路线。"
-          : "For many Gulf exporters, it is not optional routing. It is the route.",
+          ? "只要赛程进入高关注节点，她就会回到报道中心。"
+          : "Whenever the calendar reaches a high-stakes point, she moves back to the center of coverage.",
       },
       {
-        title: isZh ? "它太敏感" : "It is sensitive",
+        title: isZh ? "成长叙事" : "Growth story",
         description: isZh
-          ? "政治措辞、无人机事件与护航安排都能被市场迅速放大。"
-          : "Political language, drone incidents, and escort moves are instantly magnified by markets.",
+          ? "关于身体变化、适应与稳定性的讨论，会把热度延长到比赛之外。"
+          : "Stories about adaptation, growth, and stability extend coverage beyond the result itself.",
       },
     ],
-    briefingsTitle: isZh ? "站内深度文章" : "In-house briefings",
+    briefingsTitle: isZh ? "站内背景文章" : "In-house briefings",
     briefingsDescription: isZh
-      ? "用更慢的阅读速度，把地图、航运与能源市场之间的关系讲清楚。"
-      : "A slower reading layer that explains how geography, shipping, and energy markets lock together.",
+      ? "用更慢的阅读速度，把比赛结果、技术细节和人物讨论拆开看。"
+      : "Take a slower pass through the results, technical details, and profile angles behind the daily coverage.",
     faqTitle: isZh ? "常见问题" : "Common questions",
     faqItems: [
       {
-        question: isZh ? "这是不是在预测封锁？" : "Is this site predicting a closure?",
+        question: isZh ? "这是全红婵的官方站点吗？" : "Is this Quan Hongchan's official site?",
         answer: isZh
-          ? "不是。这里更强调风险信号与市场传导，而不是简单预测“会不会封锁”。"
-          : "No. The goal is to track risk signals and market transmission, not make simplistic closure calls.",
+          ? "不是。这是一个基于公开报道整理的信息页，用来跟踪全红婵相关新闻与人物观察，不代表官方团队。"
+          : "No. This is a public-source editorial watch page for Quan Hongchan coverage and does not represent her official team.",
       },
       {
-        question: isZh ? "为什么会同时看油价和航运？" : "Why track both oil and shipping?",
+        question: isZh ? "为什么要同时看比赛和采访？" : "Why track both results and interviews?",
         answer: isZh
-          ? "因为霍尔木兹海峡的风险往往先体现在航运与保险，再传导到能源定价。"
-          : "Because Hormuz stress often appears first in shipping and insurance before it fully lands in energy pricing.",
+          ? "因为围绕她的关注往往既由比赛结果驱动，也由采访和人物叙事持续放大。"
+          : "Because her coverage is driven both by competition results and by interviews or profile-driven storylines.",
       },
       {
-        question: isZh ? "这些深度文章多久更新？" : "How often are the briefings updated?",
+        question: isZh ? "新闻多久刷新一次？" : "How often does the feed refresh?",
         answer: isZh
-          ? "它们不会像快讯一样频繁滚动，而是随着区域局势与市场结构变化定期修订。"
-          : "They are not rolling headlines. They are revised when regional dynamics or market structure materially change.",
+          ? "新闻流会随来源更新而变化，站点默认按约 15 分钟节奏重新拉取公开 RSS。"
+          : "The feed changes with source updates and the site re-fetches public RSS feeds on roughly a 15-minute cadence.",
       },
     ],
-    footerTitle: isZh ? "霍尔木兹海峡观察站" : "Hormuz Strait Watch",
+    footerTitle: isZh ? "全红婵观察站" : "Quan Hongchan Watch",
     footerDescription: isZh
-      ? "围绕海峡、航运与能源市场的垂直情报站。"
-      : "A focused editorial desk on the strait, shipping stress, and energy-market spillovers.",
+      ? "围绕全红婵新闻、跳水赛事与人物讨论的垂直信息页。"
+      : "A focused information desk around Quan Hongchan news, diving events, and athlete-profile coverage.",
     footerNote: isZh
-      ? "公开新闻流会有噪音，因此本站把“霍尔木兹海峡直接相关性”放在排序第一位。"
-      : "Open-source news is noisy, so this desk ranks direct Hormuz relevance ahead of generic regional volume.",
+      ? "公开新闻会有噪音，因此本站优先排序“与全红婵直接相关”的报道。"
+      : "Open news feeds are noisy, so this desk ranks stories by direct relevance to Quan Hongchan first.",
     navLatest: isZh ? "最新动态" : "Latest",
-    navSignals: isZh ? "监测重点" : "Signals",
-    navBriefings: isZh ? "深度文章" : "Briefings",
+    navSignals: isZh ? "看点" : "Focus",
+    navBriefings: isZh ? "人物文章" : "Briefings",
     navAbout: isZh ? "关于" : "About",
-    newsroomTitle: isZh ? "滚动快讯与深度背景" : "Rolling updates and deeper context",
+    newsroomTitle: isZh ? "最新新闻与背景观察" : "Latest news and deeper context",
     newsroomDescription: isZh
-      ? "先看新闻，再顺着同一条事件链看航运、油价与地缘风险。"
-      : "Read the headline first, then trace the same event through shipping, oil, and geopolitical risk.",
-    readMore: isZh ? "继续阅读" : "Read more",
-    externalSourceLabel: isZh ? "外部来源" : "External source",
+      ? "先看最新报道，再顺着同一条线索看比赛、训练和讨论热度。"
+      : "Read the latest headline first, then trace the same storyline through competition, training, and public discussion.",
+    readMore: isZh ? "返回文章列表" : "Back to briefings",
     updatedLabel: isZh ? "更新于" : "Updated",
     monitoringLabel: isZh ? "监测中" : "Monitoring",
+    spotlightLabel: isZh ? "人物焦点" : "Athlete focus",
+    spotlightStatus: isZh ? "赛事观察中" : "Competition watch active",
+    footerMonitorLabel: isZh ? "导航" : "Navigate",
+    footerNoteLabel: isZh ? "说明" : "Note",
+    readTimeLabel: isZh ? "阅读时长" : "Read time",
+    focusLabel: isZh ? "聚焦主题" : "Focus",
+    keyPointsLabel: isZh ? "核心要点" : "Key points",
+    referencesLabel: isZh ? "参考链接" : "References",
   };
 };
 
@@ -632,15 +641,11 @@ export const getHormuzClientMessages = (locale: string) => {
       admin_center: isZh ? "管理中心" : "Admin Center",
     },
     sign_modal: {
-      sign_in_title: isZh
-        ? "登录霍尔木兹海峡观察站"
-        : "Sign in to Hormuz Strait News",
+      sign_in_title: isZh ? "登录全红婵观察站" : "Sign in to Quan Hongchan Watch",
       sign_in_description: isZh
         ? "登录后可使用账户相关功能。"
-        : "Sign in to access account features.",
-      sign_up_title: isZh
-        ? "加入霍尔木兹海峡观察站"
-        : "Join Hormuz Strait News",
+        : "Sign in to access account-related features.",
+      sign_up_title: isZh ? "加入全红婵观察站" : "Join Quan Hongchan Watch",
       sign_up_description: isZh ? "创建你的账户" : "Create your account",
       email_title: isZh ? "邮箱" : "Email",
       email_placeholder: isZh ? "输入邮箱地址" : "Enter your email address",
@@ -665,8 +670,8 @@ export const getHormuzClientMessages = (locale: string) => {
       loading: isZh ? "提交中..." : "Submitting...",
       contact_tip: isZh ? "其他联系方式" : "Other ways to contact us",
       rating_tip: isZh
-        ? "你觉得这个站点目前有多有用？"
-        : "How useful is this site so far?",
+        ? "这个站点对你了解全红婵是否有帮助？"
+        : "Is this site helping you follow Quan Hongchan more clearly?",
       placeholder: isZh ? "在这里写下你的反馈..." : "Leave your feedback here...",
     },
     my_invites: {
@@ -678,8 +683,8 @@ export const getHormuzClientMessages = (locale: string) => {
       copy_invite_link: isZh ? "复制邀请链接" : "Copy Invite Link",
       invite_code: isZh ? "邀请码" : "Invite Code",
       invite_tip: isZh
-        ? "邀请同事一起关注霍尔木兹海峡动态。"
-        : "Invite colleagues to follow the Hormuz watch desk.",
+        ? "邀请朋友一起关注全红婵的最新动态。"
+        : "Invite friends to follow Quan Hongchan's latest updates.",
       invite_balance: isZh ? "邀请奖励余额" : "Invite Reward Balance",
       total_invite_count: isZh ? "邀请总数" : "Total Invite Count",
       total_paid_count: isZh ? "付费总数" : "Total Paid Count",
@@ -709,10 +714,10 @@ export const getHormuzClientMessages = (locale: string) => {
 };
 
 export const getAllHormuzBriefingSlugs = () =>
-  HORMUZ_BRIEFINGS.map((briefing) => briefing.slug);
+  ATHLETE_BRIEFINGS.map((briefing) => briefing.slug);
 
 export const getHormuzBriefings = (locale: string): HormuzBriefing[] =>
-  HORMUZ_BRIEFINGS.map((briefing) => ({
+  ATHLETE_BRIEFINGS.map((briefing) => ({
     slug: briefing.slug,
     updatedAt: briefing.updatedAt,
     readingMinutes: briefing.readingMinutes,

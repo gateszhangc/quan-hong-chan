@@ -67,13 +67,13 @@ export default function HormuzBriefingPage({
           </div>
           <div className="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
             <p className="text-[0.65rem] uppercase tracking-[0.24em] text-[#7ea0b5]">
-              Read time
+              {copy.readTimeLabel}
             </p>
             <p className="mt-3 text-sm text-[#f5ead9]">{briefing.readingMinutes} min</p>
           </div>
           <div className="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
             <p className="text-[0.65rem] uppercase tracking-[0.24em] text-[#7ea0b5]">
-              Focus
+              {copy.focusLabel}
             </p>
             <p className="mt-3 text-sm text-[#f5ead9]">{briefing.category}</p>
           </div>
@@ -83,7 +83,7 @@ export default function HormuzBriefingPage({
       <section className="mt-8 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
         <aside className="rounded-[1.8rem] border border-white/10 bg-white/5 p-6">
           <p className="text-xs uppercase tracking-[0.28em] text-[#8fb0c2]">
-            Key points
+            {copy.keyPointsLabel}
           </p>
           <ul className="mt-5 space-y-4">
             {briefing.bullets.map((bullet) => (
@@ -104,7 +104,9 @@ export default function HormuzBriefingPage({
       </section>
 
       <section className="mt-8 rounded-[1.8rem] border border-white/10 bg-white/5 p-6">
-        <p className="text-xs uppercase tracking-[0.28em] text-[#8fb0c2]">References</p>
+        <p className="text-xs uppercase tracking-[0.28em] text-[#8fb0c2]">
+          {copy.referencesLabel}
+        </p>
         <div className="mt-5 space-y-3">
           {briefing.references.map((reference) => (
             <a

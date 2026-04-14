@@ -52,7 +52,7 @@ export default function SignModal() {
       <div className="flex items-center justify-center rounded-2xl border border-border/50 bg-background/50 p-4 shadow-sm">
         <div className="relative w-16 h-16">
           <NextImage
-            src="/brand/hormuz-logo.png"
+            src="/brand/quan-hong-chan-logo.svg"
             alt={copy.brand}
             fill
             className="object-contain"

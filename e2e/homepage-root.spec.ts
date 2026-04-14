@@ -7,7 +7,7 @@ test("root path resolves to the localized homepage", async ({ page }) => {
   await expect(page).toHaveURL(/\/zh$/);
   await expect(
     page.getByRole("heading", {
-      name: /把霍尔木兹海峡的新闻、航运风险与能源冲击放到同一张桌面上/i,
+      name: /把全红婵的最新新闻、比赛节点与人物线索放到同一张桌面上/i,
     })
   ).toBeVisible();
 });

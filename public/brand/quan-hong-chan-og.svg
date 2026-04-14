@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="122" y1="72" x2="1092" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B2130"/>
+      <stop offset="1" stop-color="#04101A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 228) rotate(54.6063) scale(306.385 330.355)">
+      <stop stop-color="#8AD7EA" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#8AD7EA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" rx="56" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="558" rx="42" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="250" cy="230" r="210" fill="url(#glow)"/>
+  <circle cx="274" cy="310" r="152" stroke="#8AD7EA" stroke-opacity="0.18" stroke-width="3"/>
+  <circle cx="274" cy="310" r="112" stroke="#8AD7EA" stroke-opacity="0.28" stroke-width="3"/>
+  <circle cx="274" cy="310" r="72" stroke="#8AD7EA" stroke-opacity="0.38" stroke-width="3"/>
+  <path d="M126 406C171.333 425.333 214.667 435 256 435C324.667 435 389 411.667 449 365" stroke="#D88D69" stroke-width="16" stroke-linecap="round"/>
+  <path d="M282 146C289.012 132.82 305.396 127.819 318.589 134.834C331.781 141.849 336.776 158.246 329.764 171.426L305.874 216.332C328.836 230.646 351.562 253.746 368.861 285.833C395.997 336.154 403.166 389.574 384.875 406.786C366.584 423.997 328.806 399.043 301.67 348.722C284.372 316.634 276.106 285.337 276.761 259.379L231.794 276.368C217.616 281.725 201.794 274.571 196.44 260.385C191.086 246.199 198.237 230.369 212.416 225.011L282 198.712V146Z" fill="#F4F8FA"/>
+  <circle cx="314" cy="108" r="20" fill="#D88D69"/>
+  <text x="575" y="160" fill="#8AD7EA" font-family="IBM Plex Sans, Arial, sans-serif" font-size="26" letter-spacing="10">quan-hong-chan.lol</text>
+  <text x="575" y="270" fill="#F7EFE5" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700">全红婵观察</text>
+  <text x="575" y="334" fill="#F7EFE5" font-family="IBM Plex Sans, Arial, sans-serif" font-size="30">Quan Hongchan Watch</text>
+  <text x="575" y="420" fill="#B8CAD6" font-family="IBM Plex Sans, Arial, sans-serif" font-size="28">最新新闻 · 赛事动态 · 人物观察</text>
+  <text x="575" y="468" fill="#B8CAD6" font-family="IBM Plex Sans, Arial, sans-serif" font-size="24">Latest news, diving results, and profile notes</text>
+</svg>

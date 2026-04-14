@@ -20,8 +20,8 @@ export async function generateMetadata({
     title: `Refund Policy | ${copy.brand}`,
     description:
       locale.startsWith("zh")
-        ? "查看霍尔木兹海峡资讯站当前不提供标准付费产品退款计划的说明。"
-        : "Review the current refund position for Hormuz Strait News and how future paid offerings would be disclosed.",
+        ? "查看全红婵观察站当前不提供标准付费产品退款计划的说明。"
+        : "Review the current refund position for Quan Hongchan Watch and how future paid offerings would be disclosed.",
     alternates: {
       canonical: getAbsoluteLocalizedUrl(siteUrl, locale, pathname),
       languages: buildAlternateLanguageUrls(siteUrl, pathname),

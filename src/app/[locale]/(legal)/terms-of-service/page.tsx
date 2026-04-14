@@ -20,8 +20,8 @@ export async function generateMetadata({
     title: `Terms of Service | ${copy.brand}`,
     description:
       locale.startsWith("zh")
-        ? "阅读霍尔木兹海峡资讯站的使用条款、信息披露与免责声明。"
-        : "Read the usage terms, informational disclosures, and disclaimers for Hormuz Strait News.",
+        ? "阅读全红婵观察站的使用条款、信息披露与免责声明。"
+        : "Read the usage terms, informational disclosures, and disclaimers for Quan Hongchan Watch.",
     alternates: {
       canonical: getAbsoluteLocalizedUrl(siteUrl, locale, pathname),
       languages: buildAlternateLanguageUrls(siteUrl, pathname),

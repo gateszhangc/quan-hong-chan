@@ -32,13 +32,13 @@ export async function generateMetadata({
       description: copy.metadataDescription,
       url: canonicalUrl,
       siteName: copy.brand,
-      images: [`${siteUrl}/brand/hormuz-og.png`],
+      images: [`${siteUrl}/brand/quan-hong-chan-og.png`],
     },
     twitter: {
       card: "summary_large_image",
       title: copy.metadataTitle,
       description: copy.metadataDescription,
-      images: [`${siteUrl}/brand/hormuz-og.png`],
+      images: [`${siteUrl}/brand/quan-hong-chan-og.png`],
     },
   };
 }

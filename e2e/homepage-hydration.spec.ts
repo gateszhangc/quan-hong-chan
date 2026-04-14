@@ -18,14 +18,14 @@ test("homepage hydrates without missing next chunks", async ({ page }) => {
 
   await expect(
     page.getByRole("heading", {
-      name: /最新头条/i,
+      name: /最新消息/i,
     })
   ).toBeVisible();
   await page.goto("/zh/posts", { waitUntil: "domcontentloaded" });
   await expect(page).toHaveURL(/\/zh\/posts$/);
   await expect(
     page.getByRole("heading", {
-      name: /滚动快讯与深度背景/i,
+      name: /最新新闻与背景观察/i,
     })
   ).toBeVisible();
 

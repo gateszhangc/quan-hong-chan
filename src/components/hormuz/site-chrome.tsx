@@ -31,7 +31,7 @@ export default function HormuzSiteChrome({
             <Link href={rootHref as any} className="flex items-center gap-3">
               <div className="relative h-11 w-11 overflow-hidden rounded-2xl border border-white/12 bg-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
                 <Image
-                  src="/brand/hormuz-logo.png"
+                  src="/brand/quan-hong-chan-logo.svg"
                   alt={copy.brand}
                   fill
                   sizes="44px"
@@ -93,7 +93,7 @@ export default function HormuzSiteChrome({
             </div>
             <div>
               <p className="text-sm uppercase tracking-[0.24em] text-[#6f8ea1]">
-                Monitor
+                {copy.footerMonitorLabel}
               </p>
               <div className="mt-4 space-y-3 text-sm text-[#d9e5ec]">
                 <Link href={latestHref as any} className="block hover:text-white">
@@ -109,7 +109,7 @@ export default function HormuzSiteChrome({
             </div>
             <div>
               <p className="text-sm uppercase tracking-[0.24em] text-[#6f8ea1]">
-                Note
+                {copy.footerNoteLabel}
               </p>
               <p className="mt-4 text-sm leading-7 text-[#9fb4c5]">{copy.footerNote}</p>
             </div>

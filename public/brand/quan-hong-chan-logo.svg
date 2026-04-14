@@ -1,0 +1,19 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="72" y1="56" x2="436" y2="456" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D2433"/>
+      <stop offset="1" stop-color="#04101A"/>
+    </linearGradient>
+    <linearGradient id="halo" x1="146" y1="118" x2="378" y2="388" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8AD7EA"/>
+      <stop offset="1" stop-color="#D88D69"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="128" fill="url(#bg)"/>
+  <circle cx="256" cy="260" r="146" fill="url(#halo)" fill-opacity="0.08"/>
+  <circle cx="256" cy="260" r="116" stroke="#8AD7EA" stroke-opacity="0.18" stroke-width="2"/>
+  <circle cx="256" cy="260" r="86" stroke="#8AD7EA" stroke-opacity="0.28" stroke-width="2"/>
+  <path d="M168 320C202 333.333 234.667 340 266 340C312.667 340 355.333 326.333 394 299" stroke="#D88D69" stroke-width="10" stroke-linecap="round"/>
+  <path d="M242 138C246.202 129.519 255.611 126.057 264.083 130.266C272.555 134.475 276.013 143.892 271.811 152.373L256.877 182.517C271.484 191.811 286.21 207.242 297.394 227.972C315.201 261.102 319.969 296.623 308.043 307.861C296.117 319.1 270.533 302.635 252.725 269.506C241.541 248.775 236.17 228.194 236.72 210.892L204.681 222.677C195.592 226.02 185.515 221.345 182.175 212.236C178.834 203.127 183.497 193.028 192.587 189.684L242 171.503V138Z" fill="#F4F8FA"/>
+  <circle cx="261" cy="118" r="15" fill="#D88D69"/>
+</svg>
