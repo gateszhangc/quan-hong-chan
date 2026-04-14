@@ -1,0 +1,102 @@
+name: Build And Release Huo Er Mu Ci Hai Xia
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: huo-er-mu-ci-hai-xia-release
+  cancel-in-progress: true
+
+env:
+  IMAGE_NAME: ghcr.io/gateszhangc/huo-er-mu-ci-hai-xia
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Derive image tag
+        id: meta
+        run: echo "image_tag=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.image_tag }}
+          build-args: |
+            AUTH_DISABLED=true
+            AUTH_URL=https://huo-er-mu-ci-hai-xia.homes/api/auth
+            NEXTAUTH_URL=https://huo-er-mu-ci-hai-xia.homes/api/auth
+            NEXT_PUBLIC_WEB_URL=https://huo-er-mu-ci-hai-xia.homes
+            NEXT_PUBLIC_SITE_URL=https://huo-er-mu-ci-hai-xia.homes
+            NEXT_PUBLIC_PROJECT_NAME=huo-er-mu-ci-hai-xia
+            NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-GV9BH3QWF6
+            NEXT_PUBLIC_CLARITY_PROJECT_ID=wb4vipqrqg
+            NEXT_PUBLIC_AUTH_DISABLED=true
+            NEXT_PUBLIC_AUTH_GOOGLE_ENABLED=false
+            NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED=false
+            NEXT_PUBLIC_AUTH_GITHUB_ENABLED=false
+            NEXT_PUBLIC_LOCALE_DETECTION=false
+
+  update-gitops-tag:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update image tag
+        env:
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          import re
+
+          path = Path("ops/k8s/huo-er-mu-ci-hai-xia/overlays/prod/kustomization.yaml")
+          content = path.read_text()
+          updated, count = re.subn(
+              r"(^\s*newTag:\s*).*$",
+              lambda match: f"{match.group(1)}{os.environ['IMAGE_TAG']}",
+              content,
+              count=1,
+              flags=re.MULTILINE,
+          )
+          if count != 1:
+              raise SystemExit("expected a single newTag entry in kustomization.yaml")
+          path.write_text(updated)
+          PY
+
+      - name: Commit manifest update
+        env:
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+        run: |
+          if git diff --quiet -- ops/k8s/huo-er-mu-ci-hai-xia/overlays/prod/kustomization.yaml; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ops/k8s/huo-er-mu-ci-hai-xia/overlays/prod/kustomization.yaml
+          git commit -m "chore: release huo-er-mu-ci-hai-xia ${IMAGE_TAG} [skip ci]"
+          git push origin HEAD:huo-er-mu-ci-hai-xia
