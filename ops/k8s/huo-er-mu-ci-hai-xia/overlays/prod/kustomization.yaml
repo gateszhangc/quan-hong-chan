@@ -7,4 +7,4 @@ resources:
   - public-env.configmap.yaml
 images:
   - name: ghcr.io/gateszhangc/huo-er-mu-ci-hai-xia
-    newTag: bootstrap
+    newTag: 5d819dfd75fd34fcf11c2ac8a1526821b06ea30b
