@@ -34,5 +34,7 @@ test("homepage metadata, robots, and sitemap stay on the current site origin", a
   expect(sitemapResponse.ok()).toBeTruthy();
   const sitemap = await sitemapResponse.text();
   expect(sitemap).toContain("/zh/posts/who-is-quan-hongchan");
+  expect(sitemap).not.toContain("/pricing");
+  expect(sitemap).not.toContain("/showcase");
   expect(sitemap).not.toContain("huo-er-mu-ci-hai-xia.homes");
 });

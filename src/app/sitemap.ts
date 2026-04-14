@@ -10,8 +10,6 @@ const PUBLIC_ROUTES: Array<{
   priority: number;
 }> = [
   { path: "/", changeFrequency: "daily", priority: 1.0 },
-  { path: "/pricing", changeFrequency: "weekly", priority: 0.9 },
-  { path: "/showcase", changeFrequency: "weekly", priority: 0.8 },
   { path: "/posts", changeFrequency: "weekly", priority: 0.8 },
   { path: "/privacy-policy", changeFrequency: "monthly", priority: 0.6 },
   { path: "/terms-of-service", changeFrequency: "monthly", priority: 0.6 },
