@@ -7,4 +7,4 @@ resources:
   - public-env.configmap.yaml
 images:
   - name: ghcr.io/gateszhangc/hormuz-brief
-    newTag: 83ab1b9e1c8ba4fac41761065f136f914ddfaf4e
+    newTag: a83b746cca2bffca287b4963cbcc6e8d7f609b50
