@@ -413,7 +413,7 @@
       "step_4_text": "使用 OAuth URL Generator，以 bot 和 applications.commands 权限邀请机器人。",
       "step_5_text": "把令牌粘贴到下面的输入框，然后点击保存并连接。",
       "token_label": "输入机器人令牌",
-      "token_placeholder": "your-discord-bot-token",
+      "token_placeholder": "discord-bot-token-placeholder",
       "save_and_connect": "保存并连接",
       "preview_intro": "Discord 机器人已创建。把它邀请进你的服务器后，就可以在频道里回复。",
       "preview_step_1": "创建应用 -> Add Bot",

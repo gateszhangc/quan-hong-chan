@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://quan-hong-chan.lol";
+const DEFAULT_SITE_URL = "https://huo-er-mu-ci-hai-xia.homes";
 
 const stripTrailingSlash = (value: string) => value.replace(/\/+$/, "");
 
@@ -6,8 +6,8 @@ const normalizeSiteUrl = (value: string) => {
   const normalized = value.startsWith("http") ? value : `https://${value}`;
   const url = new URL(normalized);
 
-  if (url.hostname === "www.quan-hong-chan.lol") {
-    url.hostname = "quan-hong-chan.lol";
+  if (url.hostname === "www.huo-er-mu-ci-hai-xia.homes") {
+    url.hostname = "huo-er-mu-ci-hai-xia.homes";
   }
 
   return stripTrailingSlash(url.toString());

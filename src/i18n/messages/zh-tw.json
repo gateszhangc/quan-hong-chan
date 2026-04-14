@@ -413,7 +413,7 @@
       "step_4_text": "使用 OAuth URL Generator，以 bot 和 applications.commands 權限邀請機器人。",
       "step_5_text": "把令牌貼到下面的輸入框，然後點擊儲存並連接。",
       "token_label": "輸入機器人令牌",
-      "token_placeholder": "your-discord-bot-token",
+      "token_placeholder": "discord-bot-token-placeholder",
       "save_and_connect": "儲存並連接",
       "preview_intro": "Discord 機器人已建立。私訊已開放，機器人隨時可以回覆。",
       "preview_step_1": "建立應用 -> Add Bot",

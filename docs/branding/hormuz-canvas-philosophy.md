@@ -1,0 +1,11 @@
+# Tidal Ledger
+
+Tidal Ledger treats space as a navigational document rather than a decorative field. Every composition should feel meticulously charted, as though a master cartographer and an editorial art director spent countless hours balancing channels, coastlines, buffers, and coordinates until the page carried the calm authority of an atlas plate. Forms are narrow, compressed, and directional. Negative space is not emptiness; it is navigable water, measured and deeply intentional.
+
+Color is disciplined and geological. Midnight navy, oxidized teal, dune beige, and rusted copper should do nearly all the work. These tones must feel painstakingly calibrated, never flashy, and always like the product of deep expertise. Warm accents are used sparingly to mark hazard, transit, or emphasis, while cool tones establish surveillance, distance, and control. The palette should look hand-tuned by someone at the top of their field, refined until every value feels inevitable.
+
+Scale and rhythm are built through recurring channels, buffer lines, and serial notations. Repetition should resemble an imaginary marine science or intelligence discipline: observations logged, grids overlaid, routes compared, every mark aligned with painstaking attention. The work should feel as if it took countless hours to construct, with expert craftsmanship evident in the spacing between lines, the discipline of margins, and the restraint of every accent.
+
+Typography is sparse and structural. Words should appear as coordinates, labels, or field notes, never as blocks of explanation. Thin uppercase captions, measured tracking, and restrained serif gestures are preferred. Text must look integrated into the object itself, as if engraved into a high-value navigational artifact. Even when the lettering is minimal, its placement must show master-level execution and the kind of care that only comes from repeated refinement.
+
+Composition should evoke a compressed passage between larger bodies: pressure, flow, and consequence held inside a narrow threshold. Diagonal movement, elongated cuts, and offset masses are welcome, but the whole must remain serene and exact. The finished piece should feel museum-grade, the product of deep expertise and relentless craft, proving that analysis, surveillance, and beauty can coexist inside one meticulously made visual object.

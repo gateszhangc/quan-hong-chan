@@ -413,7 +413,7 @@
       "step_4_text": "Use OAuth URL Generator to invite the bot with bot and applications.commands scopes.",
       "step_5_text": "Paste the token in the field below and click Save & Connect.",
       "token_label": "Enter bot token",
-      "token_placeholder": "your-discord-bot-token",
+      "token_placeholder": "discord-bot-token-placeholder",
       "save_and_connect": "Save & Connect",
       "preview_intro": "Discord bot created. DM access is open and the bot is ready to reply.",
       "preview_step_1": "Create app -> Add Bot",

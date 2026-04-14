@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import { defaultLocale } from "@/i18n/locale";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -37,9 +36,5 @@ export default async function PriceAliasPage({
   const { locale } = await params;
   const resolvedSearchParams = await searchParams;
   const queryString = toQueryString(resolvedSearchParams);
-
-  const targetPath =
-    locale === defaultLocale ? `/pricing${queryString}` : `/${locale}/pricing${queryString}`;
-
-  redirect(targetPath);
+  redirect(`/${locale}${queryString}`);
 }

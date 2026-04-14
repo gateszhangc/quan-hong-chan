@@ -1,5 +1,6 @@
 import RefundPolicyContent from "@/app/(legal)/refund-policy/page.mdx";
 import { getSiteUrl } from "@/lib/site-url";
+import { getHormuzSiteCopy } from "@/lib/hormuz-content";
 import {
   buildAlternateLanguageUrls,
   getAbsoluteLocalizedUrl,
@@ -13,11 +14,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const siteUrl = getSiteUrl();
   const pathname = "/refund-policy";
+  const copy = getHormuzSiteCopy(locale);
 
   return {
-    title: "Refund Policy | EasyClaw",
+    title: `Refund Policy | ${copy.brand}`,
     description:
-      "Review EasyClaw refund eligibility, cancellation terms, and support response timelines.",
+      locale.startsWith("zh")
+        ? "查看霍尔木兹海峡资讯站当前不提供标准付费产品退款计划的说明。"
+        : "Review the current refund position for Hormuz Strait News and how future paid offerings would be disclosed.",
     alternates: {
       canonical: getAbsoluteLocalizedUrl(siteUrl, locale, pathname),
       languages: buildAlternateLanguageUrls(siteUrl, pathname),
@@ -28,4 +32,3 @@ export async function generateMetadata({
 export default function RefundPolicyPage() {
   return <RefundPolicyContent />;
 }
-

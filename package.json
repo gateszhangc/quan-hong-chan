@@ -1,9 +1,9 @@
 {
-  "name": "quan-hong-chan",
+  "name": "ai-outfit-generator",
   "version": "2.6.0",
   "private": true,
   "author": "idoubi",
-  "homepage": "https://quan-hong-chan.lol",
+  "homepage": "https://www.qwenimageedit.club",
   "engines": {
     "node": ">=18.17.0"
   },

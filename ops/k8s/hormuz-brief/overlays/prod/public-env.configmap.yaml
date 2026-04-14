@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hormuz-brief-public-env
+data:
+  AUTH_DISABLED: "true"
+  SITE_URL: "https://huo-er-mu-ci-hai-xia.homes"
+  AUTH_URL: "https://huo-er-mu-ci-hai-xia.homes/api/auth"
+  NEXTAUTH_URL: "https://huo-er-mu-ci-hai-xia.homes/api/auth"
+  NEXT_PUBLIC_WEB_URL: "https://huo-er-mu-ci-hai-xia.homes"
+  NEXT_PUBLIC_SITE_URL: "https://huo-er-mu-ci-hai-xia.homes"
+  NEXT_PUBLIC_PROJECT_NAME: "hormuz-strait-news"
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: "G-GV9BH3QWF6"
+  NEXT_PUBLIC_CLARITY_PROJECT_ID: "wb4vipqrqg"
+  NEXT_PUBLIC_AUTH_DISABLED: "true"
+  NEXT_PUBLIC_AUTH_GOOGLE_ENABLED: "false"
+  NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED: "false"
+  NEXT_PUBLIC_AUTH_GITHUB_ENABLED: "false"
+  NEXT_PUBLIC_LOCALE_DETECTION: "false"

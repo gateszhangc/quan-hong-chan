@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
-import LandingTheme from "@/components/theme/landing-theme";
-import HormuzSiteHeader from "@/components/hormuz/site-header";
-import HormuzSiteFooter from "@/components/hormuz/site-footer";
+import HormuzSiteChrome from "@/components/hormuz/site-chrome";
 
 export default async function DefaultLayout({
   children,
@@ -13,10 +11,6 @@ export default async function DefaultLayout({
   const { locale } = await params;
 
   return (
-    <LandingTheme>
-      <HormuzSiteHeader locale={locale} />
-      <main className="overflow-x-hidden">{children}</main>
-      <HormuzSiteFooter locale={locale} />
-    </LandingTheme>
+    <HormuzSiteChrome locale={locale}>{children}</HormuzSiteChrome>
   );
 }

@@ -1,5 +1,6 @@
 import PrivacyPolicyContent from "@/app/(legal)/privacy-policy/page.mdx";
 import { getSiteUrl } from "@/lib/site-url";
+import { getHormuzSiteCopy } from "@/lib/hormuz-content";
 import {
   buildAlternateLanguageUrls,
   getAbsoluteLocalizedUrl,
@@ -13,11 +14,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const siteUrl = getSiteUrl();
   const pathname = "/privacy-policy";
+  const copy = getHormuzSiteCopy(locale);
 
   return {
-    title: "Privacy Policy | EasyClaw",
+    title: `Privacy Policy | ${copy.brand}`,
     description:
-      "Learn how EasyClaw collects, uses, and protects your data when deploying and managing OpenClaw assistants.",
+      locale.startsWith("zh")
+        ? "了解霍尔木兹海峡资讯站如何处理网站访问数据、分析数据与联系信息。"
+        : "Learn how Hormuz Strait News handles site analytics, technical data, and contact information.",
     alternates: {
       canonical: getAbsoluteLocalizedUrl(siteUrl, locale, pathname),
       languages: buildAlternateLanguageUrls(siteUrl, pathname),
@@ -28,4 +32,3 @@ export async function generateMetadata({
 export default function PrivacyPolicyPage() {
   return <PrivacyPolicyContent />;
 }
-

@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { locales } from "@/i18n/locale";
+import HeroBg from "@/components/blocks/hero/bg";
 
 type LandingThemeProps = {
   children: ReactNode;
@@ -39,7 +40,7 @@ const isLandingPath = (pathname: string | null) => {
   return false;
 };
 
-const getLandingTheme = (_pathname: string | null) => "landing-hormuz";
+const getLandingTheme = (_pathname: string | null) => "landing-shipany";
 
 export default function LandingTheme({
   children,
@@ -67,10 +68,13 @@ export default function LandingTheme({
     };
   }, [shouldApplyTheme, landingClassName]);
 
+  const showHeroBg = landingClassName.includes("landing-raphael");
+
   return (
     <div
       className={shouldApplyTheme ? cn(landingWrapperClassName, "overflow-x-hidden") : ""}
     >
+      {shouldApplyTheme && showHeroBg ? <HeroBg /> : null}
       {children}
     </div>
   );

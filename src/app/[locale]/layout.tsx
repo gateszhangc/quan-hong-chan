@@ -1,5 +1,4 @@
 import {
-  getMessages,
   setRequestLocale,
 } from "next-intl/server";
 import { AppContextProvider } from "@/contexts/app";
@@ -10,8 +9,10 @@ import { ThemeProvider } from "@/providers/theme";
 import { getSiteUrl } from "@/lib/site-url";
 import GoogleAnalytics from "@/components/analytics/google-analytics";
 import GaRouteTracker from "@/components/analytics/ga-route-tracker";
-import ClarityAnalytics from "@/components/analytics/clarity";
-import { getHormuzSiteCopy } from "@/data/hormuz-news";
+import {
+  getHormuzClientMessages,
+  getHormuzSiteCopy,
+} from "@/lib/hormuz-content";
 
 export async function generateMetadata({
   params,
@@ -21,14 +22,14 @@ export async function generateMetadata({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const siteUrl = getSiteUrl();
   const copy = getHormuzSiteCopy(locale);
+  const siteUrl = getSiteUrl();
 
   return {
     metadataBase: new URL(siteUrl),
     title: {
       template: `%s`,
-      default: copy.siteName,
+      default: copy.metadataTitle,
     },
     description: copy.metadataDescription,
     keywords: copy.metadataKeywords,
@@ -49,15 +50,12 @@ export default async function LocaleLayout({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const messages = await getMessages();
-
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={getHormuzClientMessages(locale)}>
       <NextAuthSessionProvider>
         <AppContextProvider>
           <ThemeProvider>
             <GoogleAnalytics />
-            <ClarityAnalytics />
             <GaRouteTracker />
             {children}
           </ThemeProvider>

@@ -4,36 +4,34 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "ops/k8s/quan-hong-chan/overlays/prod/kustomization.yaml"
   workflow_dispatch:
-
-concurrency:
-  group: quan-hong-chan-release-${{ github.ref }}
-  cancel-in-progress: true
 
 permissions:
   contents: write
   packages: write
 
+concurrency:
+  group: hormuz-brief-release
+  cancel-in-progress: true
+
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/quan-hong-chan
-  KUSTOMIZATION_FILE: ops/k8s/quan-hong-chan/overlays/prod/kustomization.yaml
+  IMAGE_NAME: ghcr.io/gateszhangc/hormuz-brief
 
 jobs:
-  release:
+  build-and-push:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]')
     runs-on: ubuntu-latest
-
+    outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
     steps:
-      - name: Checkout
+      - name: Check out code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Derive image tag
+        id: meta
+        run: echo "image_tag=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
 
-      - name: Log in to GHCR
+      - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -46,70 +44,64 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: |
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}
-            ${{ env.IMAGE_NAME }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          tags: ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.image_tag }}
+          build-args: |
+            AUTH_DISABLED=true
+            AUTH_URL=https://huo-er-mu-ci-hai-xia.homes/api/auth
+            NEXTAUTH_URL=https://huo-er-mu-ci-hai-xia.homes/api/auth
+            NEXT_PUBLIC_WEB_URL=https://huo-er-mu-ci-hai-xia.homes
+            NEXT_PUBLIC_SITE_URL=https://huo-er-mu-ci-hai-xia.homes
+            NEXT_PUBLIC_PROJECT_NAME=hormuz-strait-news
+            NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-GV9BH3QWF6
+            NEXT_PUBLIC_CLARITY_PROJECT_ID=wb4vipqrqg
+            NEXT_PUBLIC_AUTH_DISABLED=true
+            NEXT_PUBLIC_AUTH_GOOGLE_ENABLED=false
+            NEXT_PUBLIC_AUTH_GOOGLE_ONE_TAP_ENABLED=false
+            NEXT_PUBLIC_AUTH_GITHUB_ENABLED=false
+            NEXT_PUBLIC_LOCALE_DETECTION=false
 
-      - name: Sync kustomize image tag
+  update-gitops-tag:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]')
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update image tag
         env:
-          GIT_SHA: ${{ github.sha }}
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
         run: |
           python3 - <<'PY'
           import os
           from pathlib import Path
+          import re
 
-          path = Path("ops/k8s/quan-hong-chan/overlays/prod/kustomization.yaml")
-          image_name = "ghcr.io/gateszhangc/quan-hong-chan"
-          new_tag = os.environ["GIT_SHA"]
-
-          lines = path.read_text().splitlines()
-          updated = False
-          inside_images = False
-          current_image = None
-
-          for index, line in enumerate(lines):
-            stripped = line.strip()
-            if stripped == "images:":
-              inside_images = True
-              current_image = None
-              continue
-
-            if inside_images and stripped and not line.startswith((" ", "\t", "-")):
-              inside_images = False
-              current_image = None
-
-            if not inside_images:
-              continue
-
-            if stripped.startswith("- name:"):
-              current_image = stripped.split(":", 1)[1].strip()
-              continue
-
-            if stripped.startswith("name:"):
-              current_image = stripped.split(":", 1)[1].strip()
-              continue
-
-            if current_image == image_name and stripped.startswith("newTag:"):
-              prefix = line[: line.index("n")]
-              lines[index] = f"{prefix}newTag: {new_tag}"
-              updated = True
-              break
-
-          if not updated:
-            raise SystemExit("image entry not found in kustomization.yaml")
-
-          path.write_text("\n".join(lines) + "\n")
+          path = Path("ops/k8s/hormuz-brief/overlays/prod/kustomization.yaml")
+          content = path.read_text()
+          updated, count = re.subn(
+              r"(^\s*newTag:\s*).*$",
+              lambda match: f"{match.group(1)}{os.environ['IMAGE_TAG']}",
+              content,
+              count=1,
+              flags=re.MULTILINE,
+          )
+          if count != 1:
+              raise SystemExit("expected a single newTag entry in kustomization.yaml")
+          path.write_text(updated)
           PY
 
-      - name: Commit updated tag
+      - name: Commit manifest update
+        env:
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
         run: |
-          if git diff --quiet -- "$KUSTOMIZATION_FILE"; then
+          if git diff --quiet -- ops/k8s/hormuz-brief/overlays/prod/kustomization.yaml; then
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$KUSTOMIZATION_FILE"
-          git commit -m "chore: sync quan-hong-chan image tag ${GITHUB_SHA::7} [skip ci]"
-          git push
+          git add ops/k8s/hormuz-brief/overlays/prod/kustomization.yaml
+          git commit -m "chore: release ${IMAGE_TAG} [skip ci]"
+          git push origin HEAD:main

@@ -131,10 +131,10 @@ const nextConfig = {
         has: [
           {
             type: "host",
-            value: "www.quan-hong-chan.lol",
+            value: "www.huo-er-mu-ci-hai-xia.homes",
           },
         ],
-        destination: "https://quan-hong-chan.lol/:path*",
+        destination: "https://huo-er-mu-ci-hai-xia.homes/:path*",
         permanent: true,
       },
       {

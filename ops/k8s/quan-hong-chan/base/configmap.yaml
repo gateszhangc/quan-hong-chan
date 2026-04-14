@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: quan-hong-chan-config
-data:
-  NEXT_PUBLIC_WEB_URL: https://quan-hong-chan.lol
-  NEXT_PUBLIC_PROJECT_NAME: quan-hong-chan
-  NEXT_PUBLIC_CLARITY_PROJECT_ID: wb4vipqrqg
-  NODE_ENV: production

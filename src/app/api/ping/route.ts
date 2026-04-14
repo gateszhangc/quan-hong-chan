@@ -7,14 +7,6 @@ import { respData, respErr } from "@/lib/resp";
 
 import { getUserUuid } from "@/services/auth_user";
 
-export async function GET() {
-  return Response.json({
-    ok: true,
-    service: "quan-hong-chan",
-    timestamp: new Date().toISOString(),
-  });
-}
-
 export async function POST(req: Request) {
   try {
     const { message } = await req.json();

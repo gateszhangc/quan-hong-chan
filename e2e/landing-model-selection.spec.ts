@@ -1,38 +1,64 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage exposes the latest briefing cards and source links", async ({ page }) => {
-  const response = await page.goto("/en");
+test("homepage renders the Hormuz news watch hero and fallback newsroom cards", async ({
+  page,
+}) => {
+  await page.goto("/en");
 
-  expect(response?.ok()).toBeTruthy();
   await expect(
-    page.getByRole("heading", { name: /Strait of Hormuz live desk/i })
+    page.getByRole("heading", {
+      name: /Put Hormuz headlines, shipping risk, and energy-market spillovers on one screen/i,
+    })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("link", { name: /See latest headlines/i }).first()
   ).toBeVisible();
   await expect(
     page.getByRole("heading", {
-      name: /Washington shifts from ceasefire monitoring to blockade logic/i,
-    })
+      name: /Where Is the Strait of Hormuz and Why Does Geography Matter So Much\?/i,
+    }).first()
   ).toBeVisible();
-  await expect(page.getByText(/Selective closure remains the core risk/i)).toBeVisible();
-
-  const sourceLink = page.getByRole("link", { name: /Primary source/i }).first();
-  await expect(sourceLink).toHaveAttribute("href", /axios\.com|imo\.org|eia\.gov/);
+  await expect(page.getByText(/Desk briefing/i).first()).toBeVisible();
 });
 
-test("archive and detail pages render a connected reading flow", async ({ page }) => {
+test("briefings hub links into article pages with markdown content", async ({
+  page,
+}) => {
   await page.goto("/en/posts");
 
   await expect(
     page.getByRole("heading", {
-      name: /Browse the latest Strait of Hormuz briefings/i,
+      name: /Rolling updates and deeper context/i,
     })
   ).toBeVisible();
 
-  const articleLink = page.locator('a[href="/en/posts/us-blockade-logic-apr-13-2026"]');
-  await expect(articleLink).toHaveCount(1);
-  await expect(articleLink).toContainText(/Read briefing/i);
+  await page.goto("/en/posts/why-hormuz-moves-oil-and-lng-markets");
 
-  await page.goto("/en/posts/us-blockade-logic-apr-13-2026");
-  await expect(page).toHaveURL(/\/en\/posts\/.+/);
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.getByText(/Key points/i)).toBeVisible();
+  await expect(page).toHaveURL(/\/en\/posts\/why-hormuz-moves-oil-and-lng-markets$/);
+  await expect(
+    page.getByRole("heading", {
+      name: /Why the Strait of Hormuz Moves Oil and LNG Markets/i,
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByText(/The market question is rarely “Is the strait closed right now\?”/i)
+  ).toBeVisible();
+});
+
+test("zh homepage serves the Chinese newsroom copy", async ({ page }) => {
+  await page.goto("/zh", { waitUntil: "domcontentloaded" });
+
+  await expect(
+    page.getByRole("heading", {
+      name: /把霍尔木兹海峡的新闻、航运风险与能源冲击放到同一张桌面上/i,
+    })
+  ).toBeVisible();
+
+  await expect(page.getByRole("link", { name: /查看最新头条/i }).first()).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: /霍尔木兹海峡在哪里，为什么它的地理位置如此关键？/i,
+    }).first()
+  ).toBeVisible();
 });

@@ -13,11 +13,9 @@ import {
   DrawerContent,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import { SiGoogle } from "react-icons/si";
 import { FcGoogle } from "react-icons/fc";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { signIn } from "next-auth/react";
 import { useAppContext } from "@/contexts/app";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -25,12 +23,17 @@ import NextImage from "next/image";
 import { useState } from "react";
 import { Loader2, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useLocale, useTranslations } from "next-intl";
+import { getHormuzSiteCopy } from "@/lib/hormuz-content";
 
 export default function SignModal() {
   const { showSignModal, setShowSignModal } = useAppContext();
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const locale = useLocale();
+  const t = useTranslations();
+  const copy = getHormuzSiteCopy(locale);
 
   const handleSignIn = async () => {
     setIsLoading(true);
@@ -49,8 +52,8 @@ export default function SignModal() {
       <div className="flex items-center justify-center rounded-2xl border border-border/50 bg-background/50 p-4 shadow-sm">
         <div className="relative w-16 h-16">
           <NextImage
-            src="/favicon.svg"
-            alt="Logo"
+            src="/brand/hormuz-logo.png"
+            alt={copy.brand}
             fill
             className="object-contain"
           />
@@ -60,10 +63,10 @@ export default function SignModal() {
       {/* Text Area */}
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-          Welcome to EasyClaw
+          {t("sign_modal.sign_in_title")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          Sign in to deploy and manage OpenClaw
+          {t("sign_modal.sign_in_description")}
         </p>
       </div>
 
@@ -88,7 +91,7 @@ export default function SignModal() {
             <FcGoogle className="w-6 h-6" />
           )}
           <span className="font-medium">
-            {isLoading ? "Signing in..." : "Continue with Google"}
+            {isLoading ? "Signing in..." : t("sign_modal.google_sign_in")}
           </span>
         </Button>
       </div>
@@ -99,7 +102,9 @@ export default function SignModal() {
     return (
       <Dialog open={showSignModal} onOpenChange={setShowSignModal}>
         <DialogContent className="sm:max-w-[425px] rounded-3xl border border-border/70 bg-card/95 p-0 shadow-sm">
-          <DialogTitle className="sr-only">Sign In</DialogTitle>
+          <DialogTitle className="sr-only">
+            {t("sign_modal.sign_in_title")}
+          </DialogTitle>
           <div className="p-8">
             {content}
           </div>
@@ -111,13 +116,15 @@ export default function SignModal() {
   return (
     <Drawer open={showSignModal} onOpenChange={setShowSignModal}>
       <DrawerContent className="rounded-t-3xl border-t border-border/70 bg-card/95 shadow-sm">
-        <DrawerTitle className="sr-only">Sign In</DrawerTitle>
+        <DrawerTitle className="sr-only">
+          {t("sign_modal.sign_in_title")}
+        </DrawerTitle>
         <div className="px-6 pb-12 pt-8">
           {content}
           <div className="mt-8">
             <DrawerClose asChild>
               <Button variant="ghost" className="w-full rounded-full">
-                Cancel
+                {t("sign_modal.cancel_title")}
               </Button>
             </DrawerClose>
           </div>

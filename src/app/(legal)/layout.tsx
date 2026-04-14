@@ -3,20 +3,22 @@ import "@/app/globals.css";
 import { MdOutlineHome } from "react-icons/md";
 import { Metadata } from "next";
 import React from "react";
-import { getTranslations } from "next-intl/server";
 import GoogleAnalytics from "@/components/analytics/google-analytics";
 import GaRouteTracker from "@/components/analytics/ga-route-tracker";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations();
-
+export function generateMetadata(): Metadata {
   return {
     title: {
-      template: `%s | ${t("metadata.title")}`,
-      default: t("metadata.title"),
+      template: `%s | Hormuz Strait News`,
+      default: "Hormuz Strait News Legal",
     },
-    description: t("metadata.description"),
-    keywords: t("metadata.keywords"),
+    description:
+      "Legal, privacy, and site-policy pages for Hormuz Strait News.",
+    keywords: [
+      "Hormuz Strait News privacy policy",
+      "Hormuz Strait News terms",
+      "Hormuz Strait News refund policy",
+    ],
   };
 }
 

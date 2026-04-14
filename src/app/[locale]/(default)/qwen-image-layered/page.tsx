@@ -1,5 +1,10 @@
 import { redirect } from "next/navigation";
 
-export default function QwenImageLayeredPage() {
-  redirect("/#caricature-maker");
+export default async function QwenImageLayeredPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  redirect(`/${locale}`);
 }

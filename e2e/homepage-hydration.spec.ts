@@ -12,17 +12,22 @@ test("homepage hydrates without missing next chunks", async ({ page }) => {
     }
   });
 
-  const response = await page.goto("/en", { waitUntil: "networkidle" });
+  const response = await page.goto("/en", { waitUntil: "domcontentloaded" });
 
   expect(response?.ok()).toBeTruthy();
 
   await expect(
-    page.getByRole("heading", { name: /Strait of Hormuz live desk/i })
+    page.getByRole("heading", {
+      name: /Latest headlines/i,
+    })
   ).toBeVisible();
+  await page.goto("/en/posts", { waitUntil: "domcontentloaded" });
+  await expect(page).toHaveURL(/\/en\/posts$/);
   await expect(
-    page.getByText(/Average oil flow through Hormuz in 2023/i).first()
+    page.getByRole("heading", {
+      name: /Rolling updates and deeper context/i,
+    })
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: /View full archive/i })).toBeVisible();
 
   expect(missingChunkRequests).toEqual([]);
 });

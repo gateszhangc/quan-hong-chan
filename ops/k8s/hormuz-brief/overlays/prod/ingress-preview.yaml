@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hormuz-brief-preview
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  ingressClassName: nginx
+  tls:
+    - secretName: hormuz-brief-preview-tls
+      hosts:
+        - hormuz-brief.144.91.77.245.sslip.io
+  rules:
+    - host: hormuz-brief.144.91.77.245.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hormuz-brief
+                port:
+                  number: 80

@@ -12,7 +12,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   webServer: {
-    command: `cross-env BACKEND_AUTOSTART=false PLAYWRIGHT_PORT=${playwrightPort} npm run dev:playwright`,
+    command: `cross-env PLAYWRIGHT_PORT=${playwrightPort} npm run dev:playwright`,
     url: `${playwrightBaseUrl}/en`,
     reuseExistingServer: process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === 'true',
     timeout: 120 * 1000,
