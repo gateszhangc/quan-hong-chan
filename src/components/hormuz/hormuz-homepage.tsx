@@ -21,9 +21,9 @@ const formatDateTime = (locale: string, value: string) => {
 
 const extractHost = (url: string) => {
   try {
-    return new URL(url, "https://huo-er-mu-ci-hai-xia.homes").hostname.replace(/^www\./, "");
+    return new URL(url, "https://quan-hong-chan.lol").hostname.replace(/^www\./, "");
   } catch {
-    return "huo-er-mu-ci-hai-xia.homes";
+    return "quan-hong-chan.lol";
   }
 };
 

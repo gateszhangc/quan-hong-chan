@@ -9,11 +9,11 @@ RUN npm ci --legacy-peer-deps
 FROM base AS builder
 WORKDIR /app
 ARG AUTH_DISABLED=true
-ARG AUTH_URL=https://huo-er-mu-ci-hai-xia.homes/api/auth
-ARG NEXTAUTH_URL=https://huo-er-mu-ci-hai-xia.homes/api/auth
-ARG NEXT_PUBLIC_WEB_URL=https://huo-er-mu-ci-hai-xia.homes
-ARG NEXT_PUBLIC_SITE_URL=https://huo-er-mu-ci-hai-xia.homes
-ARG NEXT_PUBLIC_PROJECT_NAME=hormuz-strait-news
+ARG AUTH_URL=https://quan-hong-chan.lol/api/auth
+ARG NEXTAUTH_URL=https://quan-hong-chan.lol/api/auth
+ARG NEXT_PUBLIC_WEB_URL=https://quan-hong-chan.lol
+ARG NEXT_PUBLIC_SITE_URL=https://quan-hong-chan.lol
+ARG NEXT_PUBLIC_PROJECT_NAME=quan-hong-chan
 ARG NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=
 ARG NEXT_PUBLIC_CLARITY_PROJECT_ID=
 ARG NEXT_PUBLIC_AUTH_DISABLED=true

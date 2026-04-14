@@ -12,10 +12,10 @@ spec:
   tls:
     - secretName: hormuz-brief-tls
       hosts:
-        - huo-er-mu-ci-hai-xia.homes
-        - www.huo-er-mu-ci-hai-xia.homes
+        - quan-hong-chan.lol
+        - www.quan-hong-chan.lol
   rules:
-    - host: huo-er-mu-ci-hai-xia.homes
+    - host: quan-hong-chan.lol
       http:
         paths:
           - path: /
@@ -25,7 +25,7 @@ spec:
                 name: hormuz-brief
                 port:
                   number: 80
-    - host: www.huo-er-mu-ci-hai-xia.homes
+    - host: www.quan-hong-chan.lol
       http:
         paths:
           - path: /
