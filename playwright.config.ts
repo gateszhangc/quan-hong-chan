@@ -13,7 +13,7 @@ export default defineConfig({
   reporter: 'html',
   webServer: {
     command: `cross-env PLAYWRIGHT_PORT=${playwrightPort} npm run dev:playwright`,
-    url: `${playwrightBaseUrl}/en`,
+    url: `${playwrightBaseUrl}/zh`,
     reuseExistingServer: process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === 'true',
     timeout: 120 * 1000,
   },

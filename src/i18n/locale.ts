@@ -33,10 +33,10 @@ export const locales = [
   "sv",
 ] as string[];
 
-export const defaultLocale = "en";
+export const defaultLocale = "zh";
 // All app pages live under the [locale] segment, so the default locale must
-// stay prefixed as well. Using "as-needed" caused / -> /en rewrites to fight
-// with /en -> / canonical redirects and produced a 404 homepage.
+// stay prefixed as well. Using "as-needed" caused / -> /zh rewrites to fight
+// with /zh -> / canonical redirects and produced a 404 homepage.
 export const localePrefix = "always";
 export const localeDetection = false;
 export const localeSwitcherEnabled = false;

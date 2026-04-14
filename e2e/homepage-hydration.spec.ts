@@ -12,20 +12,20 @@ test("homepage hydrates without missing next chunks", async ({ page }) => {
     }
   });
 
-  const response = await page.goto("/en", { waitUntil: "domcontentloaded" });
+  const response = await page.goto("/zh", { waitUntil: "domcontentloaded" });
 
   expect(response?.ok()).toBeTruthy();
 
   await expect(
     page.getByRole("heading", {
-      name: /Latest headlines/i,
+      name: /最新头条/i,
     })
   ).toBeVisible();
-  await page.goto("/en/posts", { waitUntil: "domcontentloaded" });
-  await expect(page).toHaveURL(/\/en\/posts$/);
+  await page.goto("/zh/posts", { waitUntil: "domcontentloaded" });
+  await expect(page).toHaveURL(/\/zh\/posts$/);
   await expect(
     page.getByRole("heading", {
-      name: /Rolling updates and deeper context/i,
+      name: /滚动快讯与深度背景/i,
     })
   ).toBeVisible();
 

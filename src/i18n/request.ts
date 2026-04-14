@@ -40,16 +40,18 @@ export default getRequestConfig(async ({ requestLocale }) => {
       messages: messages,
     };
   } catch (e) {
+    const fallbackLocale = toFileLocale(routing.defaultLocale);
+
     return {
-      locale: "en",
+      locale: routing.defaultLocale,
       messages: {
-        ...(await import(`./messages/en.json`)).default,
-        ...(await import("./pages/landing/en.json")).default,
-        ...(await import("./pages/pricing/en.json")).default,
-        ...(await import("./pages/showcase/en.json")).default,
-        ...(await import("./pages/font-recognizer/en.json")).default,
-        ...(await import("./pages/image-flip-generator/en.json")).default,
-        ...(await import("./pages/blog/en.json")).default,
+        ...(await import(`./messages/${fallbackLocale}.json`)).default,
+        ...(await import(`./pages/landing/${fallbackLocale}.json`)).default,
+        ...(await import(`./pages/pricing/${fallbackLocale}.json`)).default,
+        ...(await import(`./pages/showcase/${fallbackLocale}.json`)).default,
+        ...(await import(`./pages/font-recognizer/${fallbackLocale}.json`)).default,
+        ...(await import(`./pages/image-flip-generator/${fallbackLocale}.json`)).default,
+        ...(await import(`./pages/blog/${fallbackLocale}.json`)).default,
       },
     };
   }

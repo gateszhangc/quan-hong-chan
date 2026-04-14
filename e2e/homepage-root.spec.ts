@@ -4,10 +4,10 @@ test("root path resolves to the localized homepage", async ({ page }) => {
   const response = await page.goto("/");
 
   expect(response?.ok()).toBeTruthy();
-  await expect(page).toHaveURL(/\/en$/);
+  await expect(page).toHaveURL(/\/zh$/);
   await expect(
     page.getByRole("heading", {
-      name: /Put Hormuz headlines, shipping risk, and energy-market spillovers on one screen/i,
+      name: /把霍尔木兹海峡的新闻、航运风险与能源冲击放到同一张桌面上/i,
     })
   ).toBeVisible();
 });

@@ -8,7 +8,7 @@ import {
 
 export const TEST_BASE_URL =
   process.env.TEST_BASE_URL?.trim() || "http://localhost:3000";
-export const HOME_URL = `${TEST_BASE_URL}/en`;
+export const HOME_URL = `${TEST_BASE_URL}/zh`;
 
 export function resolveCookieHostNeedles(baseUrl = TEST_BASE_URL): string[] {
   const fallback = ["localhost", "127.0.0.1"];
